@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
 const Product = () => {
-    const [toggle, setToggle] = useState(true)
+    const [toggle, setToggle] = useState(false)
     return (
     <>
 <section>
 <div class="flex p-6 ">
-    <img src={require("./meuble.jpg")} alt="photo" class="w-3/5"/>
+    <img src={require("./meuble.jpg")} alt="photo" class="w-3/5 h-full"/>
     <div class="w-2/5">
         <h2 class= "font-medium text-4xl text-stone-800 m-3">NameProduct</h2>
         <h1 class="font-medium text-6xl text-stone-800 m-3 ">Price.€</h1>
@@ -23,6 +23,9 @@ const Product = () => {
         {toggle && (
         <div class="text-xl text-stone-800 mx-3">
             ICI sont les détails : matière, état, couleur ...
+            Les bois durs sont considérés comme la qualité maximale et sont les plus chers. 
+            Leurs couleurs naturelles varient des bois les plus profonds aux bois les plus 
+            légers et ils peuvent être teints ou peints pour plus de diversité.
         </div> )}
     </div>
 </div>
