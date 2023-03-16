@@ -34,12 +34,19 @@ const Header = ({ cart, setCart, removeFromCart }) => {
               <li>
                 <UserIcon className="h-6 w-6 text-slate-900 mr-3" />
               </li>
-              <li>
+              {cart.length ? (
+              <li  className="flex">
+             
                 <ShoppingBagIcon
-                  className="h-6 w-6 text-slate-900 mr-6 cursor-pointer"
+                  className="h-6 w-6 text-slate-900 cursor-pointer mr-6"
                   onClick={toggleCart}
                 />
-              </li>
+                  <p className="absolute ml-3 -mt-1 rounded-full w-5 h-5 text-sm bg-yellow-400 text-center">{cart.length}</p>
+               
+              </li>) :   <ShoppingBagIcon
+                  className="h-6 w-6 text-slate-900 cursor-pointer mr-6"
+                  onClick={toggleCart}
+                /> }
               <li>
                 <Bars3Icon className="h-6 w-6 text-slate-900" />
               </li>

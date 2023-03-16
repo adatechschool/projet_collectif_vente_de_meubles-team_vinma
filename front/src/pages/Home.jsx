@@ -12,13 +12,14 @@ const Home = () => {
   const addToCart = (product) => {
     const newCart = [...cart];
     const productExist = newCart.find((elem) => elem.id === product.id);
-    // console.log(productExist);
+ 
     if (productExist) {
       console.log("le produit est deja dans la panier");
     } else {
       newCart.push(product);
     }
     setCart(newCart);
+    saveCart(newCart)
   };
 
   const removeFromCart = (product) => {
@@ -27,7 +28,19 @@ const Home = () => {
     const index = newCart.indexOf(productInTab);
     newCart.splice(index, 1);
     setCart(newCart);
+    saveCart(newCart)
   };
+
+  const saveCart = (cart) => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+  
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
 
   const products = [
     {
@@ -35,7 +48,7 @@ const Home = () => {
       title: "Meuble TV en teck",
       description:
         "Meuble tv, portes coulissante, niche et rangement vinyles bleu canard et teck.",
-      picture: <img className="h-20" src={Meuble01} alt="" />,
+      picture: { Meuble01 },
       price: 9.38,
     },
     {
@@ -43,7 +56,7 @@ const Home = () => {
       title: "Meuble TV en teck",
       description:
         "Meuble tv, portes coulissante, niche et rangement vinyles bleu canard et teck.",
-      picture: <img className="h-20" src={Meuble01} alt="" />,
+      picture: { Meuble01 },
       price: 9.38,
     },
     {
@@ -51,7 +64,7 @@ const Home = () => {
       title: "Meuble TV en teck",
       description:
         "Meuble tv, portes coulissante, niche et rangement vinyles bleu canard et teck.",
-      picture: <img className="h-20" src={Meuble01} alt="" />,
+      picture: { Meuble01 },
       price: 9.38,
     },
   ];
@@ -72,7 +85,7 @@ const Home = () => {
               >
                 <h1>{product.title}</h1>
                 <p>{product.description}</p>
-                <div>{product.picture}</div>
+                <img className="h-20" src={product.picture.Meuble01} alt="" />,
                 <p>{product.price}</p>
               </div>
             );
