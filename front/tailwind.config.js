@@ -9,7 +9,8 @@ module.exports = {
         beige: "#F1EFEB",
         gold: "#F8B840",
         marineblue: "#5DC5E3",
-        darkgold: "#d69e34;"
+        darkgold: "#d69e34",
+        kaki: "#9ac122"
       }
     },
   },
