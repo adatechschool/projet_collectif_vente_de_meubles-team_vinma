@@ -49,7 +49,12 @@ const Login = () => {
                             required
                         />
                     </div>
-                    <button className="hover:text-red-600">Do you haven't an account ? Sign up !</button>
+                    <button 
+                    className="hover:text-red-600"
+                    onClick={() => { navigate("/signup") }}
+                    >
+                     Do you haven't an account ? Sign up !
+                    </button>
                 </div>
                 <button 
                  onClick={handleSubmit}

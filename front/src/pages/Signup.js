@@ -52,7 +52,7 @@ const Signup = () => {
               <input
               type="text"
               placeholder="enter your name"
-              className="border-[1.5px] p-1 rounded-sm p-1.5"
+              className="border-[1.5px] py-1.5 px-3 rounded-sm p-1.5"
               value={name}
               onChange={(event) => {
                 setName(event.target.value);
@@ -65,7 +65,7 @@ const Signup = () => {
               <input
                 type="text"
                 placeholder="enter your last name"
-                className="border-[1.5px] p-1 rounded-sm p-1.5"
+                className="border-[1.5px] py-1.5 px-3 rounded-sm p-1.5"
                 value={lastname}
                 onChange={(event) => {
                   setLastname(event.target.value);
@@ -78,7 +78,7 @@ const Signup = () => {
               <input
                 type="text"
                 placeholder="enter your nickname"
-                className="border-[1.5px] p-1 rounded-sm p-1.5"
+                className="border-[1.5px] py-1.5 px-3 rounded-sm p-1.5"
                 value={nickname}
                 onChange={(event) => {
                   setNickname(event.target.value);
@@ -91,7 +91,7 @@ const Signup = () => {
               <input
                 type="text"
                 placeholder="enter your address"
-                className="border-[1.5px] p-1 rounded-sm p-1.5"
+                className="border-[1.5px] py-1.5 px-3 rounded-sm p-1.5"
                 value={address}
                 onChange={(event) => {
                   setAddress(event.target.value);
@@ -104,7 +104,7 @@ const Signup = () => {
               <input
                 type="email"
                 placeholder="enter your email"
-                className="border-[1.5px] p-1 rounded-sm p-1.5"
+                className="border-[1.5px] py-1.5 px-3 rounded-sm p-1.5"
                 value={email}
                 onChange={(event) => {
                   setEmail(event.target.value);
@@ -117,7 +117,7 @@ const Signup = () => {
               <input
                 type="password"
                 placeholder="enter your password"
-                className="border-[1.5px] p-1 rounded-sm p-1.5"
+                className="border-[1.5px] py-1.5 px-3 rounded-sm p-1.5"
                 value={password}
                 onChange={(event) => {
                   setPassword(event.target.value);
@@ -130,7 +130,7 @@ const Signup = () => {
               <input
                 type="password"
                 placeholder="confirm your password"
-                className="border-[1.5px] p-1 rounded-sm p-1.5"
+                className="border-[1.5px] py-1.5 px-3 rounded-sm"
                 value={confirmPassword}
                 onChange={(event) => {
                   setConfirmPassword(event.target.value);
