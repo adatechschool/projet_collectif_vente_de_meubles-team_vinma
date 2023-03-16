@@ -4,6 +4,7 @@ import './App.css';
 //import Components / Pages
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Product from "./pages/Product";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<Login/>}/>
+        <Route path="/product" element={<Product/>}/>
       </Routes>
     </BrowserRouter>
   </>)
