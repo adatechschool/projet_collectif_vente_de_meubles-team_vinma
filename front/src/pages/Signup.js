@@ -42,10 +42,10 @@ const Signup = () => {
     <>
     <div className="bg-beige h-screen pt-10">
       <form className="bg-white ml-[33%] inline-flex w-1/3 flex-col items-center pt-10 pb-6 rounded-sm">
-        <div className="font-bold text-4xl mb-3 w-[40%]">sign up</div>
-        <div className="w-[40%] text-marineblue font-bold text-xl">It's my first journey with VINMA</div>
-        <div className="w-[40%] my-1 mb-4">Sign up in order to post</div>
-        <div className="flex flex-col gap-y-1 mb-4 w-[40%]">
+        <div className="font-bold text-4xl mb-3 w-[45%]">sign up</div>
+        <div className="w-[45%] text-marineblue font-bold text-xl">It's my first journey with VINMA</div>
+        <div className="w-[45%] my-1 mb-4">Sign up in order to post</div>
+        <div className="flex flex-col gap-y-1 mb-4 w-[45%]">
           <label>name *</label>
           <input
           type="text"
@@ -58,7 +58,7 @@ const Signup = () => {
           required
           />
         </div>
-        <div className="flex flex-col gap-y-1 mb-4 w-[40%]">
+        <div className="flex flex-col gap-y-1 mb-4 w-[45%]">
           <label>last name *</label>
           <input
             type="text"
@@ -71,7 +71,7 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="flex flex-col gap-y-1 mb-4 w-[40%]">
+        <div className="flex flex-col gap-y-1 mb-4 w-[45%]">
           <label>nickname *</label>
           <input
             type="text"
@@ -84,7 +84,7 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="flex flex-col gap-y-1 mb-4 w-[40%]">
+        <div className="flex flex-col gap-y-1 mb-4 w-[45%]">
           <label>address *</label>
           <input
             type="text"
@@ -97,7 +97,7 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="flex flex-col gap-y-1 mb-4 w-[40%]">
+        <div className="flex flex-col gap-y-1 mb-4 w-[45%]">
           <label>email *</label>
           <input
             type="email"
@@ -110,7 +110,7 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="flex flex-col gap-y-1 mb-4 w-[40%]">
+        <div className="flex flex-col gap-y-1 mb-4 w-[45%]">
           <label>password *</label>
           <input
             type="password"
@@ -123,7 +123,7 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="flex flex-col gap-y-1 mb-4 w-[40%]">
+        <div className="flex flex-col gap-y-1 mb-4 w-[45%]">
           <label>confirm password *</label>
           <input
             type="password"
@@ -136,7 +136,7 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="flex flex-col gap-y-1 w-[40%]">
+        <div className="flex flex-col gap-y-1 w-[45%]">
           <label>avatar</label>
           <input type="file" className="mt-1 mb-2"/>
         </div>
