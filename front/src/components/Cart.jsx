@@ -46,13 +46,16 @@ const Cart = ({ toggleCart, cart, removeFromCart }) => {
       })}
 
       <div className="flex flex-col cart bg-white  mx-4 mt-[1px] p-5">
-        <div className="flex items-end justify-between">
-          <p className="font-bold">Total</p>
+        <div className="flex items-end justify-between sm:justify-end">
+          <p className="font-bold sm:mr-20">Total</p>
           <div className="price text-3xl font-bold">{total.toFixed(2)} €</div>
         </div>
-        <button className="bg-orange-400 text-white p-2 mt-7 rounded">
+        <div className="sm:flex sm:justify-end">
+        <button className="bg-orange-400 text-white p-2 mt-7 w-full rounded sm:w-44">
           Commander
         </button>
+        </div>
+   
         <div className="flex items-center mt-10">
           <ChevronLeftIcon className="h-5 w-5" />
           <p className="cursor-pointer" onClick={toggleCart}>
