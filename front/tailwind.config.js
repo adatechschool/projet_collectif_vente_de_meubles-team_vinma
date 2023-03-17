@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -10,9 +8,9 @@ module.exports = {
         gold: "#F8B840",
         marineblue: "#5DC5E3",
         darkgold: "#d69e34",
-        kaki: "#9ac122"
-      }
+        kaki: "#9ac122",
+      },
     },
   },
   plugins: [],
-}
+};
