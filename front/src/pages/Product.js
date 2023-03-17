@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Meuble01 from "../img/meuble01.jpg";
 
 const Product = () => {
   const [toggle, setToggle] = useState(false);
@@ -6,7 +7,7 @@ const Product = () => {
     <>
       <section>
         <div class="flex p-6 ">
-          <img src={require("./meuble.jpg")} alt="photo" class="w-3/5 h-full" />
+          <img src={Meuble01} alt="photo" class="w-3/5 h-full" />
           <div class="w-2/5">
             <h2 class="font-medium text-4xl text-stone-800 m-3">NameProduct</h2>
             <h1 class="font-medium text-6xl text-stone-800 m-3 ">Price.€</h1>
@@ -52,35 +53,35 @@ const Product = () => {
           <div class="flex m-8 text-center pb-4 ">
             <div class="border w-1/5 h-85 mx-4 bg-white p-4">
               <a href="#" target="_blank">
-                <img src={require("./meuble.jpg")} alt="photo" />
+                <img src={Meuble01} alt="photo" />
               </a>
               <h4 class="font-medium text-xl text-stone-800 ">Title product</h4>
               <h2 class="font-medium text-6xl text-stone-800 pt-32">22.€</h2>
             </div>
             <div class="border w-1/5 h-85 mx-4 bg-white p-4">
               <a href="#" target="_blank">
-                <img src={require("./meuble.jpg")} alt="photo" />
+                <img src={Meuble01} alt="photo" />
               </a>
               <h4 class="font-medium text-xl text-stone-800">Title product</h4>
               <h2 class="font-medium text-6xl text-stone-800 pt-32">22.€</h2>
             </div>
             <div class="border w-1/5 h-85 mx-4 bg-white p-4">
               <a href="#" target="_blank">
-                <img src={require("./meuble.jpg")} alt="photo" />
+                <img src={Meuble01} alt="photo" />
               </a>
               <h4 class="font-medium text-xl text-stone-800">Title product</h4>
               <h2 class="font-medium text-6xl text-stone-800 pt-32">22.€</h2>
             </div>
             <div class="border w-1/5 h-85 mx-4 bg-white p-4">
               <a href="#" target="_blank">
-                <img src={require("./meuble.jpg")} alt="photo" />
+                <img src={Meuble01} alt="photo" />
               </a>
               <h4 class="font-medium text-xl text-stone-800">Title product</h4>
               <h2 class="font-medium text-6xl text-stone-800 pt-32 ">22.€</h2>
             </div>
             <div class="border w-1/5 h-85 mx-4 bg-white p-4">
               <a href="#" target="_blank">
-                <img src={require("./meuble.jpg")} alt="photo" />
+                <img src={Meuble01} alt="photo" />
               </a>
               <h4 class="font-medium text-xl text-stone-800 ">Title product</h4>
               <h2 class="font-medium text-6xl text-stone-800 pt-32 ">22.€</h2>
@@ -94,35 +95,35 @@ const Product = () => {
           <div class="flex m-8 text-center pb-8">
             <div class="border w-1/5 h-85 mx-4 bg-white p-4 ">
               <a href="#" target="_blank">
-                <img src={require("./meuble.jpg")} alt="photo" />
+                <img src={Meuble01} alt="photo" />
               </a>
               <h4 class="font-medium text-xl text-stone-800">Title product</h4>
               <h2 class="font-medium text-6xl text-stone-800 pt-32 ">22.€</h2>
             </div>
             <div class="border w-1/5 h-85 mx-4 bg-white p-4">
               <a href="#" target="_blank">
-                <img src={require("./meuble.jpg")} alt="photo" />
+                <img src={Meuble01} alt="photo" />
               </a>
               <h4 class="font-medium text-xl text-stone-800">Title product</h4>
               <h2 class="font-medium text-6xl text-stone-800 pt-32">22.€</h2>
             </div>
             <div class="border w-1/5 h-85 mx-4 bg-white p-4">
               <a href="#" target="_blank">
-                <img src={require("./meuble.jpg")} alt="photo" />
+                <img src={Meuble01} alt="photo" />
               </a>
               <h4 class="font-medium text-xl text-stone-800 ">Title product</h4>
               <h2 class="font-medium text-6xl text-stone-800 pt-32 ">22.€</h2>
             </div>
             <div class="border w-1/5 h-85 mx-4 bg-white p-4">
               <a href="#" target="_blank">
-                <img src={require("./meuble.jpg")} alt="photo" />
+                <img src={Meuble01} alt="photo" />
               </a>
               <h4 class="font-medium text-xl text-stone-800 ">Title product</h4>
               <h2 class="font-medium text-6xl text-stone-800 pt-32 ">22.€</h2>
             </div>
             <div class="border w-1/5 h-85 mx-4 bg-white p-4">
               <a href="#" target="_blank">
-                <img src={require("./meuble.jpg")} alt="photo" />
+                <img src={Meuble01} alt="photo" />
               </a>
               <h4 class="font-medium text-xl text-stone-800 ">Title product</h4>
               <h2 class="font-medium text-6xl text-stone-800 pt-32 ">22.€</h2>
