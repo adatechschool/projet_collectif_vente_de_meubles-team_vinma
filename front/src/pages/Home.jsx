@@ -116,6 +116,7 @@ const Home = () => {
       };
     return (
         <>
+        <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart}/>
         <div className="Home w-[100vw] h-[125vh]  mt-10 mr-10 ml-10"> 
 
         {/* Carousel pour category menu */}
