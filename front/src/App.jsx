@@ -10,18 +10,6 @@ import Home from "./pages/Home"
 import Product from "./pages/Product";
 
 function App() {
-  // const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
-
-  // const handleToken = (token) => {
-  //   if (token) {
-  //     Cookies.set("userToken", token, { expires: 7 });
-  //     setUserToken(token);
-  //   } else {
-  //     Cookies.remove("userToken");
-  //     setUserToken(null);
-  //   }
-  // };
-
 
   return (<>
     <BrowserRouter>
