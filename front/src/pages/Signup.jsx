@@ -11,6 +11,7 @@ const Signup = () => {
   // const [picture, setPicture] = useState([]);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [profilePicture, setProfilePicture] = useState("");
 
   const navigate = useNavigate();
 
@@ -20,11 +21,12 @@ const Signup = () => {
       if (password === confirmPassword) {
         const response = await axios.post("http://localhost:8080/signup", {
           name: name,
-          lastname: lastname,
-          nickname: nickname,
+          lastName: lastname,
+          nickName: nickname,
           address: address,
           email: email,
           password: password,
+          profilePicture: profilePicture
         });
         console.log(response.data);
         navigate("/");
@@ -140,11 +142,16 @@ const Signup = () => {
             </div>
             <div className="flex flex-col gap-y-1">
               <label>avatar</label>
-              <input type="file" className="mt-1 mb-2"/>
+              <input type="file" className="mt-1 mb-2" id="file" name="file" onChange={(event) => {
+                console.log(event.target.files[0])
+                const image = event.target.files[0]
+                setProfilePicture(image);
+                
+              }}/>
             </div>
           </div>
           <button
-            type="submit"
+    
             className="border-b-2 border-darkgold transition duration-200 hover:bg-darkgold text-white mt-10 px-5 py-2 bg-gold rounded-sm"
             onClick={handleSubmit}
           >
