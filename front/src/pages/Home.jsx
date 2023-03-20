@@ -122,42 +122,42 @@ const Home = () => {
         {/* Carousel pour category menu */}
 
           <Carousel responsive={responsive}>
-              <div className="card">
+              <button className="card">
                 <img className="product--image rounded-full border border-gray-100 shadow-lg w-24 h-24"
                     src="https://static.galerieslafayette.com/media/3004086/300408683792/G_300408683792_1212_VFP_1.jpg"
                     alt="product image"/>
-                    <span className="ml-8"> Bed </span>     
-              </div>
-              <div className="card">
+                    <span> Bed </span>     
+              </button>
+              <button className="card">
                 <img className="product--image rounded-full border border-gray-100 shadow-lg w-24 h-24"
                     src="https://cdn.laredoute.com/products/0/0/9/0093e7dd5f1b25cd1fb79dde54a7ca4f.jpg?width=900&dpr=1"
                     alt="product image"/>
-                    <span className="ml-5">Cabinet</span>
-              </div>
-              <div className="card">
+                    <span>Cabinet</span>
+              </button>
+              <button className="card">
                   <img className="product--image rounded-full border border-gray-100 shadow-lg w-24 h-24"
                       src="https://medias.maisonsdumonde.com/image/upload/q_auto,f_auto/w_2000/img/canape-clic-clac-3-places-en-velours-vert-1000-16-15-198168_1.jpg"
                       alt="product image"/>
-                      <span className="ml-7">Sofa</span>
-              </div>
-              <div className="card">
+                      <span>Sofa</span>
+              </button>
+              <button className="card">
                   <img className="product--image rounded-full border border-gray-100 shadow-lg w-24 h-24"
                       src="https://medias.maisonsdumonde.com/image/upload/q_auto,f_auto/w_2000/img/chaise-vintage-en-velours-vieux-rose-et-metal-imitation-chene-1000-4-30-210073_1.jpg"
                       alt="product image"/>
-                      <span className="ml-7">Chair</span>
-              </div>
-              <div className="card">
+                      <span>Chair</span>
+              </button>
+              <button className="card">
                   <img className="product--image rounded-full border border-gray-100 shadow-lg w-24 h-24"
                       src="https://cdn.laredoute.com/products/1/8/5/185539d0b362ea30b16462b30d8f1e20.jpg?width=700&dpr=1"
                       alt="product image"/>
-                      <span className="ml-7" >Table</span>
-              </div>
-              <div className="card">
+                      <span>Table</span>
+              </button>
+              <button className="card">
                   <img className="product--image rounded-full border border-gray-100 shadow-lg w-24 h-24"
                       src="https://cdn.laredoute.com/products/c/4/0/c400ea36ee52792fc307da3f3eaee21c.jpg?width=800&dpr=1"
                       alt="product image"/>
-                      <span className="ml-6">Others</span>
-              </div>
+                      <span>Others</span>
+              </button>
           </Carousel>
 
               <h2 className= "font-medium text-4xl text-stone-800 mt-10 mr-10 ml-10">you may also like</h2>
