@@ -17,15 +17,22 @@ const Publication = () => {
         setPicture(e.target.files[0])
     }
 
+
     const handleSubmit= async (event) => {
+        
+        event.preventDefault();
         try {
-            const response = await axios.post ("https://localhost:8080/publication", {
+            const response = await axios.post("http://localhost:8080/publication", {
                 title: title,
                 category: category,
                 description: description,
                 price: price,
-                picture: picture
-            });
+                // picture: picture
+            }, {
+                headers: {
+                  'Authorization': `${localStorage.getItem("auth")}`
+                },
+            })
             console.log(response.data);
             navigate("/");
         } catch (error) {
