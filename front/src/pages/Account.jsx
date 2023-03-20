@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import ContactDetails from "../components/ContactDetails";
+import MyPublications from "../components/MyPublications";
+import ChangePassword from "../components/ChangePassword";
 
 
 const Account = () => {
@@ -12,7 +15,7 @@ const Account = () => {
     const [email, setEmail] = useState('');
     const [address, setAdress] = useState('');
     const [newAddress, setNewAddress] = useState('');
-    const [slideName, setSlideName] = useState('');
+    const [slideName, setSlideName] = useState('details');
     const [activeSlide, setActiveSlide] = useState('');
 
 
@@ -45,7 +48,15 @@ const Account = () => {
     const slides = [
         {
             title:'details',
-            content: 'mycontent'
+            content: <ContactDetails name={name} lastName={lastName} address={address} email={email}/>
+        },
+        {
+            title:'publications',
+            content: <MyPublications/>
+        },
+        {
+            title:'password',
+            content: <ChangePassword/>
         }
     ];
 
@@ -65,7 +76,7 @@ const Account = () => {
     return (
         <>
         <Header cart={[]} setCart={()=>{}} removeFromCart={()=>{}}/>
-        <div>{activeSlide}</div>
+        
         <div className="bg-beige px-4 py-4 h-screen">
             <div className="flex space-x-4 px-4">
             <div className="flex flex-col w-64 items-start space-y-2 bg-white py-4 px-4">
@@ -73,39 +84,14 @@ const Account = () => {
                 <p>Welcome, {name}</p>
                 <img className="rounded border-gray-100 shadow-sm" src="https://cdn.pixabay.com/photo/2021/11/12/03/04/woman-6787784_1280.png" alt="[Avatar]"></img>
                 <button className="hover:text-cyan-400" onClick={()=>{setSlideName('details')}}>my contact details</button>
-                <button className="hover:text-cyan-400">change password</button>
+                <button className="hover:text-cyan-400" onClick={()=>{setSlideName('password')}}>change password</button>
                 <button className="hover:text-cyan-400">my favorite items</button>
-                <button className="hover:text-cyan-400">my orders</button>
-                <button className="hover:text-cyan-400">my publications</button>
+                <button className="hover:text-cyan-400" onClick={()=>{setSlideName('publications')}}>my publications</button>
                 <button className="hover:text-cyan-400" onClick={handleSingOut}>sign out</button>
             </div>
             
             <div className="space-y-4 w-full">
-                <div className="space-x-4 space-y-2 rounded border-gray-100 shadow-sm bg-white py-4 px-4">
-                    <button className="text-lime-500 font-bold text-xl px-4">my last order</button>
-                    <p>No order placed with this account.</p>
-                    <button className="text-white border border-cyan bg-cyan-400 font-semibold py-2 px-6">start shopping</button> 
-                </div>
-
-                <div className="space-x-4 space-y-4 shadow-sm bg-white py-4 px-4">
-                    <div className="text-rose-700 font-extrabold text-xl rounded py-3 px-4">my contact details</div>
-                    <div className="flex space-x-16">
-                        <div className="space-y-2">
-                            <h3 className="font-bold">My infos</h3>
-                            <p>{email}</p>
-                            <button className="font-semibold">Change your infos</button>
-                        </div>
-                        <div className="space-y-2">
-                            <h3 className="font-bold">Billing address</h3>
-                            <div>
-                            <p>{name} {lastName}</p>
-                            <p>{address}</p>
-                            </div>
-                            {/* <input type="text" placeholder="enter a new address" value={newAddress} onChange={(e)=> setNewAddress(e.target.value)}/> */}
-                            <button className="font-semibold">Change your address</button>
-                        </div> 
-                    </div>         
-                </div>
+                <div>{activeSlide}</div>
             </div>
             </div>
         </div>
