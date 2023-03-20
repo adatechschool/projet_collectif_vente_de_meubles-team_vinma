@@ -8,7 +8,6 @@ const Login = () => {
 
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
-        console.log('coucou')
         e.preventDefault();
         try {
             const response = await axios.post("http://localhost:8080/login", {
@@ -17,7 +16,8 @@ const Login = () => {
             })
             console.log(response.data);
             localStorage.setItem("auth", response.data.token)
-            // navigate("/");
+            localStorage.setItem("id", response.data.userId)
+            navigate("/");
         } catch (error) {
             console.log(error);
         }

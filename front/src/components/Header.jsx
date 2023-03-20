@@ -24,7 +24,9 @@ const Header = ({ cart, setCart, removeFromCart }) => {
       <div className="global-header">
         <div className="flex justify-between bg-white w-full h-20 flex items-center px-4">
           <div className="left">
+            
             <img src={Logo} alt="" className="w-12 h-12" />
+            
           </div>
           <div className="right">
             <ul className="flex">
