@@ -7,13 +7,16 @@ const Login = () => {
     const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:8080/login", {
+            const response = await axios.put("http://localhost:8080/login", {
                 email: email,
                 password: password
             })
             console.log(response.data);
+            localStorage.setItem("auth", response.data.token)
+            localStorage.setItem("id", response.data.userId)
             navigate("/");
         } catch (error) {
             console.log(error);

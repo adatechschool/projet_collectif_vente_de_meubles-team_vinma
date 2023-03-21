@@ -29,7 +29,10 @@ const Signup = () => {
           profilePicture: profilePicture
         });
         console.log(response.data);
-        navigate("/");
+        if (response.data.password){
+          navigate("/login");
+        }
+        
       } else {
         console.log(
           "Your password confirmation is different from your password"
