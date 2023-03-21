@@ -8,6 +8,8 @@ import Account from "./pages/Account";
 import Publication from "./pages/Publication";
 import Home from "./pages/Home"
 import Product from "./pages/Product";
+import Confirmation from "./pages/Confirmation";
+import Sidebar from "./pages/Sidebar";
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
         <Route path="/account" element={<Account/>}/>
         <Route path="/publication" element={<Publication/>}/>
         <Route path="/product" element={<Product/>}/>
+        <Route path="/confirmation" element={<Confirmation/>}/>
+        <Route path="/sidebar" element={<Sidebar/>}/>
 
       </Routes>
     </BrowserRouter>

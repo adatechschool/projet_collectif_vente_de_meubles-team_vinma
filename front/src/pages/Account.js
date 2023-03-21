@@ -13,7 +13,6 @@ const Account = () => {
             <img class="rounded border-gray-100 shadow-sm" src="https://cdn.pixabay.com/photo/2021/11/12/03/04/woman-6787784_1280.png" alt="[Avatar]"></img>
             <button class="hover:text-blue-400">My contact details</button>
             <button class="hover:text-blue-400">Change password</button>
-            <button class="hover:text-blue-400">My favorite items</button>
             <button class="hover:text-blue-400">My orders</button>
             <button class="hover:text-blue-400">My publications</button>
             <button class="hover:text-blue-400">Signout</button>

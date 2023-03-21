@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // import assets
-import Logo from "../img/logo-hema.svg";
+import Logo from "../img/logo-vinma.png";
 import {
   MagnifyingGlassIcon,
   UserIcon,
@@ -11,6 +11,7 @@ import {
 
 // import components
 import Cart from "./Cart";
+import Sidebar from "../pages/Sidebar";
 
 const Header = ({ cart, setCart, removeFromCart }) => {
   const [cartIsOpen, setCartIsOpen] = useState(false);
@@ -24,7 +25,7 @@ const Header = ({ cart, setCart, removeFromCart }) => {
       <div className="global-header">
         <div className="flex justify-between bg-white w-full h-20 flex items-center px-4">
           <div className="left">
-            <img src={Logo} alt="" className="w-12 h-12" />
+            <img src={Logo} alt="" className="w-13 h-13 mt-4" />
           </div>
           <div className="right">
             <ul className="flex">
@@ -32,13 +33,16 @@ const Header = ({ cart, setCart, removeFromCart }) => {
                 <MagnifyingGlassIcon className="h-6 w-6 text-slate-900 mr-3" />
               </li>
               <li>
-                <UserIcon className="h-6 w-6 text-slate-900 mr-3" />
+                <a href="/account">
+                  <UserIcon className="h-6 w-6 text-slate-900 mr-10" />
+                </a>
               </li>
-              {cart.length ? (
+              <Sidebar></Sidebar>
+              {/* {cart.length ? (
               <li  className="flex">
              
                 <ShoppingBagIcon
-                  className="h-6 w-6 text-slate-900 cursor-pointer mr-6"
+                  className="h-6 w-6 text-slate-900 cursor-pointer mr-6 -m-2 p-2 text-gray-400 hover:text-gray-500 sm:"
                   onClick={toggleCart}
                 />
                   <p className="absolute ml-3 -mt-1 rounded-full w-5 h-5 text-sm bg-yellow-400 text-center">{cart.length}</p>
@@ -46,19 +50,15 @@ const Header = ({ cart, setCart, removeFromCart }) => {
               </li>) :   <ShoppingBagIcon
                   className="h-6 w-6 text-slate-900 cursor-pointer mr-6"
                   onClick={toggleCart}
-                /> }
-              <li>
+                /> } */}
+              {/* <li>
                 <Bars3Icon className="h-6 w-6 text-slate-900" />
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
         {cartIsOpen && (
-          <Cart
-            toggleCart={toggleCart}
-            cart={cart}
-            setCart={setCart}
-            removeFromCart={removeFromCart}
+          <Sidebar
           />
         )}
       </div>
