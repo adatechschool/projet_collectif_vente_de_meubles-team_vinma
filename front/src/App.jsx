@@ -9,6 +9,7 @@ import Publication from "./pages/Publication";
 import Home from "./pages/Home"
 import Product from "./pages/Product";
 import MyPosts from "./pages/myposts";
+import Confirmation from "./pages/Confirmation.jsx";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/publication" element={<Publication/>}/>
         <Route path="/product" element={<Product/>}/>
         <Route path="/myposts" element={<MyPosts/>}/>
+        <Route path="/confirmation" element={<Confirmation/>}/>
 
       </Routes>
     </BrowserRouter>
