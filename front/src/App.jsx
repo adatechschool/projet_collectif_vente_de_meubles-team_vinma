@@ -8,7 +8,7 @@ import Account from "./pages/Account";
 import Publication from "./pages/Publication";
 import Home from "./pages/Home"
 import Product from "./pages/Product";
-import Confirmation from "./pages/Confirmation";
+import Confirmation from "./pages/Confirmation.jsx";
 
 function App() {
 
