@@ -117,7 +117,7 @@ const Home = () => {
     return (
         <>
         <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart}/>
-        <div className="Home w-[100vw] h-[125vh]  mt-10 mr-10 ml-10"> 
+        <div className="Home w-[100vw] h-[125vh]  pt-10 pr-10 pl-10"> 
 
         {/* Carousel pour category menu */}
 
@@ -163,9 +163,9 @@ const Home = () => {
               <h2 className= "font-medium text-4xl text-stone-800 mt-10 mr-10 ml-10">you may also like</h2>
 
           {/* adding products */}
-          <section className=" mt-6 mr-10">
+          <section>
             <Carousel responsive={responsive2}>
-              <div className="card mb-8 mt-8 ml-8 bg-white">
+              <div className="card pb-8 pt-8 pl-8 bg-white">
                     <img className="w-[200px] h-[200px] object-cover pl-6" 
                         src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
                         alt="img"/>

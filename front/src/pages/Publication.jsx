@@ -53,6 +53,7 @@ const Publication = () => {
                         setTitle(event.target.value)
                     } 
                 }
+                required
                 />
                 </div>
                 <div>
@@ -87,6 +88,7 @@ const Publication = () => {
                         setDescription(event.target.value)
                     } 
                 }
+                required
                 />
                 </div>
                 <div>
@@ -100,6 +102,7 @@ const Publication = () => {
                         setPrice(event.target.value)
                     } 
                 }
+                 required
                 />
                 </div>
                 <div>
