@@ -11,6 +11,7 @@ import Publication from "./pages/Publication";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
 import Confirmation from "./pages/Confirmation.jsx";
+import Pagination from "./components/Pagination";
 
 function App() {
   const [data, setData] = useState([]);
@@ -37,8 +38,11 @@ function App() {
           <Route path="/confirmation" element={<Confirmation />} />
         </Routes>
       </BrowserRouter>
+      
+      <Pagination />
     </>
   );
+
 }
 
 export default App;
