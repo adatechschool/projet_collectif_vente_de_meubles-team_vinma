@@ -38,7 +38,7 @@ const Signup = () => {
             "Content-Type": "multipart/form-data",
           }
         });
-        navigate("/login");
+        navigate("/confirmation");
         
       } else {
         console.log(
