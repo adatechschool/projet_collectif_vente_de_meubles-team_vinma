@@ -30,7 +30,7 @@ const Signup = () => {
         formData.append('email', email)
         formData.append('password', password)
 
-        const response = await axios.post("http://localhost:8080/signup",
+        await axios.post("http://localhost:8080/signup",
           formData,
         
         {
@@ -38,10 +38,7 @@ const Signup = () => {
             "Content-Type": "multipart/form-data",
           }
         });
-        console.log(response.data);
-        if (response.data.password){
-          navigate("/login");
-        }
+        navigate("/login");
         
       } else {
         console.log(
