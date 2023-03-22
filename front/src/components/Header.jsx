@@ -21,13 +21,16 @@ const Header = ({ cart, setCart, removeFromCart }) => {
 
   return (
     <>
-      <div className="global-header">
+      <div className="global-header border-b-[1px] sticky top-0 z-50">
         <div className="flex justify-between bg-white w-full h-20 flex items-center px-4">
           <div className="left">
             <img src={Logo} alt="" className="w-12 h-12" />
           </div>
           <div className="right">
-            <ul className="flex">
+            <ul className="flex items-center">
+              <li>
+                <button className="rounded-lg py-2 px-10  mr-4 bg-amber-400 hover:bg-black duration-300 text-white text-sm hover:transition hover:duration-300 hover:ease-in-out">Sell now</button>
+              </li>
               <li>
                 <MagnifyingGlassIcon className="h-6 w-6 text-slate-900 mr-3" />
               </li>

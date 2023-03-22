@@ -7,7 +7,8 @@ const Cart = ({ toggleCart, cart, removeFromCart }) => {
 
   return (
     <>
-      <div className="cart bg-white  mx-4 mt-4  p-5">
+    <div className="bg-white">
+    <div className="cart bg-white px-5 border-t-[1px]">
         <h1 className="text-slate-900 text-3xl font-bold">My cart </h1>
         <div className="flex items-center mt-3">
           <ChevronLeftIcon className="h-5 w-5" />
@@ -19,7 +20,7 @@ const Cart = ({ toggleCart, cart, removeFromCart }) => {
       {cart.map((product) => {
         total += product.price;
         return (
-          <div className="flex flex-col cart bg-white  mx-4 mt-[1px] p-5">
+          <div className="flex flex-col cart bg-white mt-[1px] p-5">
             <div className="flex justify-end">
               <TrashIcon className="h-6 w-6" onClick={removeFromCart} />
          
@@ -45,7 +46,7 @@ const Cart = ({ toggleCart, cart, removeFromCart }) => {
         );
       })}
 
-      <div className="flex flex-col cart bg-white  mx-4 mt-[1px] p-5">
+      <div className="flex flex-col cart bg-white  mt-[1px] p-5">
         <div className="flex items-end justify-between sm:justify-end">
           <p className="font-bold sm:mr-20">Total</p>
           <div className="price text-3xl font-bold">{total.toFixed(2)} €</div>
@@ -63,6 +64,8 @@ const Cart = ({ toggleCart, cart, removeFromCart }) => {
           </p>
         </div>
       </div>
+    </div>
+     
     </>
   );
 };
