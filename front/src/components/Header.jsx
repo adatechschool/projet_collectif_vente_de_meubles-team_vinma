@@ -13,10 +13,11 @@ import {
 // import components
 import Cart from "./Cart";
 
-const Header = ({ cart, setCart, removeFromCart }) => {
-  
-  const navigate = useNavigate();
+const Header = ({ cart, setCart, removeFromCart, isSearched }) => {
+
   const [cartIsOpen, setCartIsOpen] = useState(false);
+  const [searched, setSearched] = useState('');
+  const navigate = useNavigate();
 
   const toggleCart = () => {
     setCartIsOpen(!cartIsOpen);
@@ -26,6 +27,7 @@ const Header = ({ cart, setCart, removeFromCart }) => {
     <>
       <div className="global-header border-b-[1px] sticky top-0 z-50">
         <div className="flex justify-between bg-white w-full h-20 flex items-center px-4">
+                        
           <div className="left">
             
             <img src={Logo} alt="" className="w-12 h-12 hover:cursor-pointer" 
@@ -35,8 +37,15 @@ const Header = ({ cart, setCart, removeFromCart }) => {
             />
             
           </div>
+          <div className="center">   
+                <div class="relative">
+                    <input type="search"  className=" outline-0 w-48 lg:w-96 block p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Search category" value={searched} onChange={(event)=>setSearched(event.target.value)}/>
+                    <button className="text-white absolute right-2.5 bottom-2.5 bg-amber-400 hover:bg-black font-medium rounded-lg text-sm px-4 py-2" onClick={()=>{isSearched(searched)}}>Search</button>
+                </div>
+          </div>
           <div className="right">
             <ul className="flex items-center">
+              
               <li>
                 <button className="rounded-lg py-2 px-10  mr-4 bg-amber-400 hover:bg-black duration-300 text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
                 onClick={() => {

@@ -1,13 +1,14 @@
 // import Carousel from "react-multi-carousel";
 // import "react-multi-carousel/lib/styles.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 //import components
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import Filters from "../components/Filters";
 
-const Home = ({data}) => {
+const Home = ({data, setCat, isSearchedHome}) => {
  
   const [cart, setCart] = useState([]);
 
@@ -43,6 +44,8 @@ const Home = ({data}) => {
       setCart(JSON.parse(savedCart));
     }
   }, []);
+
+  const navigate = useNavigate();
 
 
 
@@ -87,7 +90,7 @@ const Home = ({data}) => {
 
   return (
     <>
-      <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} />
+      <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} isSearched={isSearchedHome}/>
 
       <div className="scrollBar flex flex-nowrap mt-5 px-5 h-[145px] overflow-hidden overflow-x-scroll ">
         <div className="flex justify-between sm:w-screen">
@@ -98,6 +101,9 @@ const Home = ({data}) => {
                   className="rounded-full border-[1px] p-2 object-cover"
                   src={filter.image}
                   alt={filter.alt}
+                  onClick={()=>{
+                    setCat(filter.title);
+                    navigate('/category');}}
                 />
                 <span className="text-sm mt-2">{filter.title}</span>
               </div>
