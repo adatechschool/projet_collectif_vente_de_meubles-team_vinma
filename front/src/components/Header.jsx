@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {useNavigate} from "react-router-dom";
 
 // import assets
 import Logo from "../img/logo-hema.svg";
@@ -13,6 +14,8 @@ import {
 import Cart from "./Cart";
 
 const Header = ({ cart, setCart, removeFromCart }) => {
+  
+  const navigate = useNavigate();
   const [cartIsOpen, setCartIsOpen] = useState(false);
 
   const toggleCart = () => {
@@ -25,7 +28,11 @@ const Header = ({ cart, setCart, removeFromCart }) => {
         <div className="flex justify-between bg-white w-full h-20 flex items-center px-4">
           <div className="left">
             
-            <img src={Logo} alt="" className="w-12 h-12" />
+            <img src={Logo} alt="" className="w-12 h-12 hover:cursor-pointer" 
+            onClick={() => {
+              navigate("/");
+            }}
+            />
             
           </div>
           <div className="right">
@@ -37,7 +44,14 @@ const Header = ({ cart, setCart, removeFromCart }) => {
                 <MagnifyingGlassIcon className="h-6 w-6 text-slate-900 mr-3" />
               </li>
               <li>
-                <UserIcon className="h-6 w-6 text-slate-900 mr-3" />
+                <UserIcon className="h-6 w-6 text-slate-900 mr-3 hover:cursor-pointer" 
+                onClick={() => {
+                  if (localStorage.getItem("id") === null) {
+                    navigate("/login");
+                  } else{
+                    navigate("/account");
+                  }
+                }}/>
               </li>
               {cart.length ? (
               <li  className="flex">
