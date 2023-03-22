@@ -38,7 +38,11 @@ const Header = ({ cart, setCart, removeFromCart }) => {
           <div className="right">
             <ul className="flex items-center">
               <li>
-                <button className="rounded-lg py-2 px-10  mr-4 bg-amber-400 hover:bg-black duration-300 text-white text-sm hover:transition hover:duration-300 hover:ease-in-out">Sell now</button>
+                <button className="rounded-lg py-2 px-10  mr-4 bg-amber-400 hover:bg-black duration-300 text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
+                onClick={() => {
+                  navigate("/publication");
+                }}
+                >Sell now</button>
               </li>
               <li>
                 <MagnifyingGlassIcon className="h-6 w-6 text-slate-900 mr-3" />
