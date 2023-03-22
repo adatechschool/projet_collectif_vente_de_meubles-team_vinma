@@ -16,10 +16,9 @@ const Publication = () => {
     //upload images
     const handleImage= (event) =>{
         let fileList = picture;
-        fileList.push(event.target.files[0])
-        setPicture(fileList)
-        console.log(picture)
-        
+        fileList.push(event.target.files[0]);
+        setPicture(fileList);
+        console.log(picture);
     }
 
 
