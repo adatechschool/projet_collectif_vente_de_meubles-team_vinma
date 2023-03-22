@@ -7,7 +7,8 @@ import Header from "../components/Header";
 import Banner from "../components/Banner";
 import Filters from "../components/Filters";
 
-const Home = () => {
+const Home = ({data}) => {
+ 
   const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
@@ -109,176 +110,30 @@ const Home = () => {
       {/* <Filters /> */}
       <h1 className="mt-20 ml-5 text-3xl font-bold">Vous allez adorer</h1>
       <div className="global-container grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        <div className="border-[1px] rounded-lg m-5 p-5 ">
-          <img
-            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
-            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
-            alt="img"
-          />
-          <div className="flex justify-between items-end sm:flex-col sm:items-start">
-            <h2 className="text-lg">Title product</h2>
-            <h2 className="text-3xl font-bold">22.50 €</h2>
+        {data.map((post)=>{
+
+          return (
+            <div className="border-[1px] rounded-lg m-5 p-5 ">
+            <img
+              className="w-full h-[200px] object-cover rounded-lg mb-5"
+              src={post.images[0].secure_url}
+              alt="img"
+            />
+            <div className="flex justify-between items-end sm:flex-col sm:items-start">
+              <h2 className="text-lg">{post.title}</h2>
+              <h2 className="text-3xl font-bold">{post.price} €</h2>
+            </div>
+            <button
+              type="submit"
+              className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
+            >
+              Add to cart
+            </button>
           </div>
-          <button
-            type="submit"
-            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
-          >
-            Add to cart
-          </button>
-        </div>
-        <div className="border-[1px] rounded-lg m-5 p-5 ">
-          <img
-            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
-            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
-            alt="img"
-          />
-          <div className="flex justify-between items-end sm:flex-col sm:items-start">
-            <h2 className="text-lg">Title product</h2>
-            <h2 className="text-3xl font-bold">22.50 €</h2>
-          </div>
-          <button
-            type="submit"
-            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
-          >
-            Add to cart
-          </button>
-        </div>
-        <div className="border-[1px] rounded-lg m-5 p-5 ">
-          <img
-            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
-            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
-            alt="img"
-          />
-          <div className="flex justify-between items-end sm:flex-col sm:items-start">
-            <h2 className="text-lg">Title product</h2>
-            <h2 className="text-3xl font-bold">22.50 €</h2>
-          </div>
-          <button
-            type="submit"
-            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
-          >
-            Add to cart
-          </button>
-        </div>
-        <div className="border-[1px] rounded-lg m-5 p-5 ">
-          <img
-            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
-            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
-            alt="img"
-          />
-          <div className="flex justify-between items-end sm:flex-col sm:items-start">
-            <h2 className="text-lg">Title product</h2>
-            <h2 className="text-3xl font-bold">22.50 €</h2>
-          </div>
-          <button
-            type="submit"
-            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
-          >
-            Add to cart
-          </button>
-        </div>
-        <div className="border-[1px] rounded-lg m-5 p-5 ">
-          <img
-            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
-            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
-            alt="img"
-          />
-          <div className="flex justify-between items-end sm:flex-col sm:items-start">
-            <h2 className="text-lg">Title product</h2>
-            <h2 className="text-3xl font-bold">22.50 €</h2>
-          </div>
-          <button
-            type="submit"
-            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
-          >
-            Add to cart
-          </button>
-        </div>
-        <div className="border-[1px] rounded-lg m-5 p-5 ">
-          <img
-            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
-            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
-            alt="img"
-          />
-          <div className="flex justify-between items-end sm:flex-col sm:items-start">
-            <h2 className="text-lg">Title product</h2>
-            <h2 className="text-3xl font-bold">22.50 €</h2>
-          </div>
-          <button
-            type="submit"
-            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
-          >
-            Add to cart
-          </button>
-        </div>
-        <div className="border-[1px] rounded-lg m-5 p-5 ">
-          <img
-            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
-            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
-            alt="img"
-          />
-          <div className="flex justify-between items-end sm:flex-col sm:items-start">
-            <h2 className="text-lg">Title product</h2>
-            <h2 className="text-3xl font-bold">22.50 €</h2>
-          </div>
-          <button
-            type="submit"
-            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
-          >
-            Add to cart
-          </button>
-        </div>
-        <div className="border-[1px] rounded-lg m-5 p-5 ">
-          <img
-            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
-            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
-            alt="img"
-          />
-          <div className="flex justify-between items-end sm:flex-col sm:items-start">
-            <h2 className="text-lg">Title product</h2>
-            <h2 className="text-3xl font-bold">22.50 €</h2>
-          </div>
-          <button
-            type="submit"
-            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
-          >
-            Add to cart
-          </button>
-        </div>
-        <div className="border-[1px] rounded-lg m-5 p-5 ">
-          <img
-            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
-            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
-            alt="img"
-          />
-          <div className="flex justify-between items-end sm:flex-col sm:items-start">
-            <h2 className="text-lg">Title product</h2>
-            <h2 className="text-3xl font-bold">22.50 €</h2>
-          </div>
-          <button
-            type="submit"
-            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
-          >
-            Add to cart
-          </button>
-        </div>
-        <div className="border-[1px] rounded-lg m-5 p-5 ">
-          <img
-            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
-            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
-            alt="img"
-          />
-          <div className="flex justify-between items-end sm:flex-col sm:items-start">
-            <h2 className="text-lg">Title product</h2>
-            <h2 className="text-3xl font-bold">22.50 €</h2>
-          </div>
-          <button
-            type="submit"
-            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
-          >
-            Add to cart
-          </button>
-        </div>
+          )
+        })}
+      
+       
       </div>
     </>
   );

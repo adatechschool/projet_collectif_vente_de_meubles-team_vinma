@@ -13,21 +13,32 @@ import Product from "./pages/Product";
 import Confirmation from "./pages/Confirmation.jsx";
 
 function App() {
+  const [data, setData] = useState([]);
 
-  return (<>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/signup" element={<Signup/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/account" element={<Account/>}/>
-        <Route path="/publication" element={<Publication/>}/>
-        <Route path="/product" element={<Product/>}/>
-        <Route path="/confirmation" element={<Confirmation/>}/>
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("http://localhost:8080/read-all-posts");
+      setData(response.data);
+    };
 
-      </Routes>
-    </BrowserRouter>
-  </>)
+    fetchData();
+  }, []);
+
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home data={data} />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/publication" element={<Publication />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/confirmation" element={<Confirmation />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;
