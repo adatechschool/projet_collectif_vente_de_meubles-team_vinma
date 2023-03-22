@@ -1,8 +1,8 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
-import Product from '../pages/Product';
+import Home from '../pages/Home';
 
 
-const items = [Product]
+const items = [Home]
 
 function Pagination() {
   return (
@@ -10,7 +10,6 @@ function Pagination() {
 
     <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
       <div className="flex flex-1 justify-between sm:hidden">
-      <div className="place-content-center">
         <a
           href="#"
           className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
@@ -88,7 +87,7 @@ function Pagination() {
         </div>
       </div>
     </div>
-</div>
+    
   )
 }
 
