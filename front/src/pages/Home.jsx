@@ -1,28 +1,26 @@
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+// import Carousel from "react-multi-carousel";
+// import "react-multi-carousel/lib/styles.css";
 import { useState, useEffect } from "react";
 
 //import components
 import Header from "../components/Header";
-
-//import assets
-import Meuble01 from "../img/meuble01.jpg";
+import Banner from "../components/Banner";
+import Filters from "../components/Filters";
 
 const Home = () => {
-
   const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
     const newCart = [...cart];
     const productExist = newCart.find((elem) => elem.id === product.id);
- 
+
     if (productExist) {
       console.log("le produit est deja dans la panier");
     } else {
       newCart.push(product);
     }
     setCart(newCart);
-    saveCart(newCart)
+    saveCart(newCart);
   };
 
   const removeFromCart = (product) => {
@@ -31,13 +29,13 @@ const Home = () => {
     const index = newCart.indexOf(productInTab);
     newCart.splice(index, 1);
     setCart(newCart);
-    saveCart(newCart)
+    saveCart(newCart);
   };
 
   const saveCart = (cart) => {
     localStorage.setItem("cart", JSON.stringify(cart));
   };
-  
+
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
@@ -45,227 +43,249 @@ const Home = () => {
     }
   }, []);
 
-  const products = [
+  const productsFilters = [
     {
-      id: "sfkgjhfdklhdkljhgdkf",
-      title: "Meuble TV en teck",
-      description:
-        "Meuble tv, portes coulissante, niche et rangement vinyles bleu canard et teck.",
-      picture: { Meuble01 },
-      price: 9.38,
+      title: "Bed",
+      image:
+        "https://medias.maisonsdumonde.com/image/upload/q_auto,f_auto/w_2000/img/lit-vintage-140x190-avec-sommier-a-lattes-1000-11-21-160372_1.jpg",
+      alt: "Bed filter",
     },
     {
-      id: "fghpoknighpokghpk",
-      title: "Meuble TV en teck",
-      description:
-        "Meuble tv, portes coulissante, niche et rangement vinyles bleu canard et teck.",
-      picture: { Meuble01 },
-      price: 9.38,
+      title: "Cabinet",
+      image:
+        "https://cdn.laredoute.com/products/0/0/9/0093e7dd5f1b25cd1fb79dde54a7ca4f.jpg?width=900&dpr=1",
+      alt: "Cabinet filter",
     },
     {
-      id: "cnvbfxjvhbyttyytytyty",
-      title: "Meuble TV en teck",
-      description:
-        "Meuble tv, portes coulissante, niche et rangement vinyles bleu canard et teck.",
-      picture: { Meuble01 },
-      price: 9.38,
+      title: "Sofa",
+      image:
+        "https://medias.maisonsdumonde.com/image/upload/q_auto,f_auto/w_2000/img/canape-clic-clac-3-places-en-velours-vert-1000-16-15-198168_1.jpg",
+      alt: "Sofa filter",
+    },
+    {
+      title: "Chair",
+      image:
+        "https://medias.maisonsdumonde.com/image/upload/q_auto,f_auto/w_2000/img/chaise-vintage-en-velours-vieux-rose-et-metal-imitation-chene-1000-4-30-210073_1.jpg",
+      alt: "Chair filter",
+    },
+    {
+      title: "Table",
+      image:
+        "https://cdn.laredoute.com/products/1/8/5/185539d0b362ea30b16462b30d8f1e20.jpg?width=700&dpr=1",
+      alt: "Table filter",
+    },
+    {
+      title: "Others",
+      image:
+        "https://cdn.laredoute.com/products/c/4/0/c400ea36ee52792fc307da3f3eaee21c.jpg?width=800&dpr=1",
+      alt: "Others filter",
     },
   ];
-    const responsive = {
-        superLargeDesktop: {
-          // the naming can be any, depends on you.
-          breakpoint: { max: 4000, min: 3000 },
-          items: 6
-        },
-        desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 6
-        },
-        tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 4
-        },
-        mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 3
-        }
-      };
 
-      const responsive2 = {
-        superLargeDesktop: {
-          // the naming can be any, depends on you.
-          breakpoint: { max: 4000, min: 3000 },
-          items: 5,
-          slideToSlide: 5
-        },
-        desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 5,
-          slideToSlide: 4
-        },
-        tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 3,
-          slideToSlide: 2
-        },
-        mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 1,
-          slideToSlide: 1
-        }
-      };
-    return (
-        <>
-        <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart}/>
-        <div className="Home w-[100vw] h-[125vh]  mt-10 mr-10 ml-10"> 
+  return (
+    <>
+      <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} />
 
-        {/* Carousel pour category menu */}
-
-          <Carousel responsive={responsive}>
-              <button className="card">
-                <img className="product--image rounded-full border border-gray-100 shadow-lg w-24 h-24"
-                    src="https://static.galerieslafayette.com/media/3004086/300408683792/G_300408683792_1212_VFP_1.jpg"
-                    alt="product image"/>
-                    <span> Bed </span>     
-              </button>
-              <button className="card">
-                <img className="product--image rounded-full border border-gray-100 shadow-lg w-24 h-24"
-                    src="https://cdn.laredoute.com/products/0/0/9/0093e7dd5f1b25cd1fb79dde54a7ca4f.jpg?width=900&dpr=1"
-                    alt="product image"/>
-                    <span>Cabinet</span>
-              </button>
-              <button className="card">
-                  <img className="product--image rounded-full border border-gray-100 shadow-lg w-24 h-24"
-                      src="https://medias.maisonsdumonde.com/image/upload/q_auto,f_auto/w_2000/img/canape-clic-clac-3-places-en-velours-vert-1000-16-15-198168_1.jpg"
-                      alt="product image"/>
-                      <span>Sofa</span>
-              </button>
-              <button className="card">
-                  <img className="product--image rounded-full border border-gray-100 shadow-lg w-24 h-24"
-                      src="https://medias.maisonsdumonde.com/image/upload/q_auto,f_auto/w_2000/img/chaise-vintage-en-velours-vieux-rose-et-metal-imitation-chene-1000-4-30-210073_1.jpg"
-                      alt="product image"/>
-                      <span>Chair</span>
-              </button>
-              <button className="card">
-                  <img className="product--image rounded-full border border-gray-100 shadow-lg w-24 h-24"
-                      src="https://cdn.laredoute.com/products/1/8/5/185539d0b362ea30b16462b30d8f1e20.jpg?width=700&dpr=1"
-                      alt="product image"/>
-                      <span>Table</span>
-              </button>
-              <button className="card">
-                  <img className="product--image rounded-full border border-gray-100 shadow-lg w-24 h-24"
-                      src="https://cdn.laredoute.com/products/c/4/0/c400ea36ee52792fc307da3f3eaee21c.jpg?width=800&dpr=1"
-                      alt="product image"/>
-                      <span>Others</span>
-              </button>
-          </Carousel>
-
-              <h2 className= "font-medium text-4xl text-stone-800 mt-10 mr-10 ml-10">you may also like</h2>
-
-          {/* adding products */}
-          <section className=" mt-6 mr-10">
-            <Carousel responsive={responsive2}>
-              <div className="card mb-8 mt-8 ml-8 bg-white">
-                    <img className="w-[200px] h-[200px] object-cover pl-6" 
-                        src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
-                        alt="img"/>
-                        <div className="pl-4 pr-4 pb-4">
-                          <h2 className="font-bold">Title product</h2>
-                          <h2 className= "text-4xl pt-2 pb-2">22 €</h2>
-                          <button
-                            type="submit"
-                            className="py-2 px-14 bg-amber-400 hover:bg-yellow-600 rounded-md text-white text-sm"
-                           >
-                            Add to cart
-                          </button>
-                        </div>
+      <div className="scrollBar flex flex-nowrap mt-5 px-5 h-[145px] overflow-hidden overflow-x-scroll ">
+        <div className="flex justify-between sm:w-screen">
+          {productsFilters.map((filter) => {
+            return (
+              <div className="flex flex-col items-center mr-5 last:mr-0 w-28 h-28">
+                <img
+                  className="rounded-full border-[1px] p-2 object-cover"
+                  src={filter.image}
+                  alt={filter.alt}
+                />
+                <span className="text-sm mt-2">{filter.title}</span>
               </div>
-              <div className="card mb-8 mt-8 ml-8 bg-white">
-                    <img className="w-[200px] h-[200px] object-cover pl-6" 
-                        src="https://static.tikamoon.com/product_photos/3965_A_HD_001/1200-1200-armoire-de-rangement-en-pin-et-cannage-ninon.webp?t=1665709167"
-                        alt="img"/>
-                        <div className="pl-4 pr-4 pb-4">
-                          <h2 className="font-bold">Title product</h2>
-                          <h2 className= "text-4xl pt-2 pb-2">22 €</h2>
-                          <button
-                            type="submit"
-                            className="py-2 px-14 bg-amber-400 hover:bg-yellow-600 rounded-md text-white text-sm"
-                           >
-                            Add to cart
-                          </button>
-                        </div>
-              </div>
-              <div className="card mb-8 mt-8 ml-8 bg-white">
-                    <img className="w-[200px] h-[200px] object-cover pl-6" 
-                        src="https://static.tikamoon.com/product_photos/1625__1200_000/1200-1200-chaise-en-teck-massif-jonak.webp?t=1665573674"
-                        alt="img"/>
-                        <div className="pl-4 pr-4 pb-4">
-                          <h2 className="font-bold">Title product</h2>
-                          <h2 className= "text-4xl pt-2 pb-2">22 €</h2>
-                          <button
-                            type="submit"
-                            className="py-2 px-14 bg-amber-400 hover:bg-yellow-600 rounded-md text-white text-sm"
-                           >
-                            Add to cart
-                          </button>
-                        </div>
-              </div>
-              <div className="card mb-8 mt-8 ml-8 bg-white">
-                    <img className="w-[200px] h-[200px] object-cover pl-6" 
-                        src="https://static.tikamoon.com/product_photos/835__HD_002/1200-1200-table-en-teck-massif-coffee-tek-6-8-pers.webp?t=1665819563"
-                        alt="img"/>
-                        <div className="pl-4 pr-4 pb-4">
-                          <h2 className="font-bold">Title product</h2>
-                          <h2 className= "text-4xl pt-2 pb-2">22 €</h2>
-                          <button
-                            type="submit"
-                            className="py-2 px-14 bg-amber-400 hover:bg-yellow-600 rounded-md text-white text-sm"
-                           >
-                            Add to cart
-                          </button>
-                        </div>
-              </div>
-              <div className="card mb-8 mt-8 ml-8 bg-white">
-                    <img className="w-[200px] h-[200px] object-cover pl-6" 
-                        src="https://cdn1.bobochicparis.com/197455-thickbox_default/lit-180x200-cm-oceane-avec-lattes-massives-tissu-texture.jpg"
-                        alt="img"/>
-                        <div className="pl-4 pr-4 pb-4">
-                          <h2 className="font-bold">Title product</h2>
-                          <h2 className= "text-4xl pt-2 pb-2">22 €</h2>
-                          <button
-                            type="submit"
-                            className="py-2 px-14 bg-amber-400 hover:bg-yellow-600 rounded-md text-white text-sm"
-                           >
-                            Add to cart
-                          </button>
-                        </div>
-              </div>
-              </Carousel>
+            );
+          })}
+        </div>
+      </div>
 
-        {/* footer section */}
-        </section>
-        <section className="flex flex-col justify-center items-center m-8 space-x-4 font-normal">
-          <div className="p-4">
-          <img className="ml-[100px]"
-          src="https://assets.made-in-meubles.com/static/version1678969329/frontend/Mim/wex/fr_FR/images/footer/phone.svg"/> Secure and confidential payment</div>
-          <div className="p-5">
-          <img className="ml-[60px]"
-          src="https://assets.made-in-meubles.com/static/version1678969329/frontend/Mim/wex/fr_FR/images/footer/lock.svg"/>
-            Delivery in France</div>
-          <div className="p-3">
-          <img className="ml-[80px]"
-          src="https://assets.made-in-meubles.com/static/version1678969329/frontend/Mim/wex/fr_FR/images/footer/truck.svg"/>
-            Reactive technical support</div>
-        </section>
-        </div>  
-      
-        </>
-    )
-}
+      <Banner />
+      {/* <Filters /> */}
+      <h1 className="mt-20 ml-5 text-3xl font-bold">Vous allez adorer</h1>
+      <div className="global-container grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="border-[1px] rounded-lg m-5 p-5 ">
+          <img
+            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
+            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
+            alt="img"
+          />
+          <div className="flex justify-between items-end sm:flex-col sm:items-start">
+            <h2 className="text-lg">Title product</h2>
+            <h2 className="text-3xl font-bold">22.50 €</h2>
+          </div>
+          <button
+            type="submit"
+            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
+          >
+            Add to cart
+          </button>
+        </div>
+        <div className="border-[1px] rounded-lg m-5 p-5 ">
+          <img
+            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
+            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
+            alt="img"
+          />
+          <div className="flex justify-between items-end sm:flex-col sm:items-start">
+            <h2 className="text-lg">Title product</h2>
+            <h2 className="text-3xl font-bold">22.50 €</h2>
+          </div>
+          <button
+            type="submit"
+            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
+          >
+            Add to cart
+          </button>
+        </div>
+        <div className="border-[1px] rounded-lg m-5 p-5 ">
+          <img
+            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
+            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
+            alt="img"
+          />
+          <div className="flex justify-between items-end sm:flex-col sm:items-start">
+            <h2 className="text-lg">Title product</h2>
+            <h2 className="text-3xl font-bold">22.50 €</h2>
+          </div>
+          <button
+            type="submit"
+            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
+          >
+            Add to cart
+          </button>
+        </div>
+        <div className="border-[1px] rounded-lg m-5 p-5 ">
+          <img
+            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
+            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
+            alt="img"
+          />
+          <div className="flex justify-between items-end sm:flex-col sm:items-start">
+            <h2 className="text-lg">Title product</h2>
+            <h2 className="text-3xl font-bold">22.50 €</h2>
+          </div>
+          <button
+            type="submit"
+            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
+          >
+            Add to cart
+          </button>
+        </div>
+        <div className="border-[1px] rounded-lg m-5 p-5 ">
+          <img
+            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
+            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
+            alt="img"
+          />
+          <div className="flex justify-between items-end sm:flex-col sm:items-start">
+            <h2 className="text-lg">Title product</h2>
+            <h2 className="text-3xl font-bold">22.50 €</h2>
+          </div>
+          <button
+            type="submit"
+            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
+          >
+            Add to cart
+          </button>
+        </div>
+        <div className="border-[1px] rounded-lg m-5 p-5 ">
+          <img
+            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
+            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
+            alt="img"
+          />
+          <div className="flex justify-between items-end sm:flex-col sm:items-start">
+            <h2 className="text-lg">Title product</h2>
+            <h2 className="text-3xl font-bold">22.50 €</h2>
+          </div>
+          <button
+            type="submit"
+            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
+          >
+            Add to cart
+          </button>
+        </div>
+        <div className="border-[1px] rounded-lg m-5 p-5 ">
+          <img
+            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
+            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
+            alt="img"
+          />
+          <div className="flex justify-between items-end sm:flex-col sm:items-start">
+            <h2 className="text-lg">Title product</h2>
+            <h2 className="text-3xl font-bold">22.50 €</h2>
+          </div>
+          <button
+            type="submit"
+            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
+          >
+            Add to cart
+          </button>
+        </div>
+        <div className="border-[1px] rounded-lg m-5 p-5 ">
+          <img
+            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
+            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
+            alt="img"
+          />
+          <div className="flex justify-between items-end sm:flex-col sm:items-start">
+            <h2 className="text-lg">Title product</h2>
+            <h2 className="text-3xl font-bold">22.50 €</h2>
+          </div>
+          <button
+            type="submit"
+            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
+          >
+            Add to cart
+          </button>
+        </div>
+        <div className="border-[1px] rounded-lg m-5 p-5 ">
+          <img
+            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
+            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
+            alt="img"
+          />
+          <div className="flex justify-between items-end sm:flex-col sm:items-start">
+            <h2 className="text-lg">Title product</h2>
+            <h2 className="text-3xl font-bold">22.50 €</h2>
+          </div>
+          <button
+            type="submit"
+            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
+          >
+            Add to cart
+          </button>
+        </div>
+        <div className="border-[1px] rounded-lg m-5 p-5 ">
+          <img
+            className="w-full max-h-[280px] object-cover rounded-lg mb-5"
+            src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
+            alt="img"
+          />
+          <div className="flex justify-between items-end sm:flex-col sm:items-start">
+            <h2 className="text-lg">Title product</h2>
+            <h2 className="text-3xl font-bold">22.50 €</h2>
+          </div>
+          <button
+            type="submit"
+            className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
+          >
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default Home;
 
-{/* <>
+{
+  /* <>
       <div className="bg-beige h-screen">
         <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} />
         <div className="product flex flex-row m-5">
@@ -287,4 +307,5 @@ export default Home;
           })}
         </div>
       </div>
-    </> */}
+    </> */
+}

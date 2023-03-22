@@ -1,12 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import "./App.css";
 
 //import Components / Pages
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Account from "./pages/Account";
 import Publication from "./pages/Publication";
-import Home from "./pages/Home"
+import Home from "./pages/Home";
 import Product from "./pages/Product";
 import Confirmation from "./pages/Confirmation.jsx";
 
