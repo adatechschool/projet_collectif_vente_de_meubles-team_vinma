@@ -6,31 +6,45 @@ const Publication = () => {
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
-    const [price, setPrice] = useState("");
-    const [picture, setPicture] = useState("");
+    const [price, setPrice] = useState('');
+    const [picture, setPicture] = useState([]);
+    const [dimensions, setDimensions] = useState('');
+    const [brand, setBrand] = useState('');
 
     const navigate = useNavigate();
 
     //upload images
-    const handleImage= (e) =>{
-        console.log(e.target.files)
-        setPicture(e.target.files[0])
+    const handleImage= (event) =>{
+        let fileList = picture;
+        fileList.push(event.target.files[0])
+        setPicture(fileList)
+        console.log(picture)
+        
     }
 
 
     const handleSubmit= async (event) => {
         
         event.preventDefault();
+        let formData = new FormData();
+        formData.append('title', title);
+        formData.append('category', category);
+        formData.append('description', description);
+        formData.append('price', price);
+        for (let i in picture){
+            console.log(picture[i])
+            formData.append('images', picture[i])
+        }
+        formData.append('brand', brand)
+        formData.append('dimensions', dimensions)
+
         try {
-            const response = await axios.post("http://localhost:8080/publication", {
-                title: title,
-                category: category,
-                description: description,
-                price: price,
-                // picture: picture
-            }, {
+            const response = await axios.post("http://localhost:8080/publication", 
+                formData,
+             {
                 headers: {
-                  'Authorization': `${localStorage.getItem("auth")}`
+                  'Authorization': `${localStorage.getItem("auth")}`,
+                  "Content-Type": "multipart/form-data"
                 },
             })
             console.log(response.data);
@@ -74,6 +88,7 @@ const Publication = () => {
                     }
                 }
                     >
+                        <option value="">Select an option</option>
                         <option value="Bed">Lit</option>
                         <option value="Sofa">Canapé</option>
                         <option value="Cabinet">Armoire</option>
@@ -96,11 +111,37 @@ const Publication = () => {
                 }
                 />
                 </div>
+                <div className="flex flex-col items-start">
+                    <label htmlFor="" className="text-sm font-bold text-gray-600 block"> Dimensions</label>
+                    <input
+                    type="text"
+                    placeholder="Ex: 160x160x50 cm."
+                    className= "w-full p-2 border border-gray-300 rounded mt-1"
+                    value={dimensions}
+                    onChange= {(event) => {
+                        setDimensions(event.target.value)
+                    } 
+                }
+                />
+                </div>
+                <div className="flex flex-col items-start">
+                    <label htmlFor="" className="text-sm font-bold text-gray-600 block"> Brand</label>
+                    <input
+                    type="text"
+                    placeholder="Ex: Ikea."
+                    className= "w-full p-2 border border-gray-300 rounded mt-1"
+                    value={brand}
+                    onChange= {(event) => {
+                        setBrand(event.target.value)
+                    } 
+                }
+                />
+                </div>
                 <div>
                     <label htmlFor="" className="text-sm font-bold text-gray-600 block"> Price </label>
                     <input
                     type="text"
-                    placeholder="00,0€"
+                    placeholder="Ex: 25, in €."
                     className= "w-full p-2 border border-gray-300 rounded mt-1"
                     value={price}
                     onChange= {(event) => {
@@ -115,7 +156,8 @@ const Publication = () => {
                     type="file"
                     placeholder="Add pictures"
                     // className= "w-full p-2 border border-gray-300 rounded mt-1"
-                    className=" w-full p-2 bg-gray-300 border-dashed border-4 h-full "
+                    className=" w-full p-2 bg-gray-300 border-dashed border-4 h-full"
+                    multiple
                     onChange= {handleImage}
                     />
                 </div>

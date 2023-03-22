@@ -18,7 +18,7 @@ const Account = () => {
     const [address, setAdress] = useState('');
     const [slideName, setSlideName] = useState('');
     const [activeSlide, setActiveSlide] = useState('');
-
+    const [avatar, setAvatar] = useState('');
 
 
     const getInfos = async () => {
@@ -33,6 +33,7 @@ const Account = () => {
         setEmail(userInfos.data.email);
         setNickName(userInfos.data.nickName);
         setAdress(userInfos.data.address);
+        setAvatar(userInfos.data.profilePicture.secure_url)
     }
     getInfos()
     
@@ -86,7 +87,7 @@ const Account = () => {
                 }
             })
         }
-    }, [name, slideName]);
+    }, [name, slideName, lastName, email, address]);
     
     
     return (
@@ -99,7 +100,7 @@ const Account = () => {
             <div className="flex flex-col w-64 items-start space-y-2 bg-white py-4 px-4">
                 <h1 className="font-bold text-2xl">VINMA and me</h1>
                 <p>Welcome, {name}</p>
-                <img className="rounded border-gray-100 shadow-sm" src="https://cdn.pixabay.com/photo/2021/11/12/03/04/woman-6787784_1280.png" alt="[Avatar]"></img>
+                <img className="rounded border-gray-100 shadow-sm" src={avatar} alt="[Avatar]"></img>
                 <button className="hover:text-cyan-400" onClick={()=>{setSlideName('details')}}>my contact details</button>
                 <button className="hover:text-cyan-400" onClick={()=>{setSlideName('password')}}>change password</button>
                 <button className="hover:text-cyan-400">my favorite items</button>

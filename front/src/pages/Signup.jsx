@@ -8,10 +8,9 @@ const Signup = () => {
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
-  // const [picture, setPicture] = useState([]);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [profilePicture, setProfilePicture] = useState("");
+  const [profilePicture, setProfilePicture] = useState(null);
 
   const navigate = useNavigate();
 
@@ -19,14 +18,25 @@ const Signup = () => {
     try {
       event.preventDefault();
       if (password === confirmPassword) {
-        const response = await axios.post("http://localhost:8080/signup", {
-          name: name,
-          lastName: lastname,
-          nickName: nickname,
-          address: address,
-          email: email,
-          password: password,
-          profilePicture: profilePicture
+        
+        console.log(profilePicture)
+        let formData = new FormData()
+
+        formData.append('profilePicture', profilePicture)
+        formData.append('name', name)
+        formData.append('lastName', lastname)
+        formData.append('nickName', nickname)
+        formData.append('address', address)
+        formData.append('email', email)
+        formData.append('password', password)
+
+        const response = await axios.post("http://localhost:8080/signup",
+          formData,
+        
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          }
         });
         console.log(response.data);
         if (response.data.password){
@@ -43,12 +53,13 @@ const Signup = () => {
     }
   };
 
+
   return (
     <>
     <div className="bg-beige">
       <div className="flex justify-center">
-        <form className="bg-white inline-flex py-6 flex-col w-[600px] items-center mt-6 pb-6 rounded-sm mb-6">
-          <div className="w-[300px]">
+        <form className="bg-white inline-flex py-6 flex-col w-96 items-center mt-6 pb-6 rounded-sm mb-6">
+          <div className="">
             <div className="font-bold text-4xl mb-3">sign up</div>
             <div className="text-marineblue font-bold text-xl">It's my first journey with VINMA</div>
             <div className="my-1 mb-4">Sign up in order to post</div>
@@ -146,11 +157,8 @@ const Signup = () => {
             <div className="flex flex-col gap-y-1">
               <label>avatar</label>
               <input type="file" className="mt-1 mb-2" id="file" name="file" onChange={(event) => {
-                console.log(event.target.files[0])
-                const image = event.target.files[0]
-                setProfilePicture(image);
-                
-              }}/>
+                setProfilePicture(event.target.files[0])
+                console.log(profilePicture)}} />
             </div>
           </div>
           <button
