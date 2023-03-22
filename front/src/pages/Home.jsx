@@ -43,6 +43,8 @@ const Home = () => {
     }
   }, []);
 
+
+
   const productsFilters = [
     {
       title: "Bed",
