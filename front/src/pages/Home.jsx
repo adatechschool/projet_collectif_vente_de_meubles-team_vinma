@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 //import components
 import Header from "../components/Header";
 
+
 //import assets
 import Meuble01 from "../img/meuble01.jpg";
 
