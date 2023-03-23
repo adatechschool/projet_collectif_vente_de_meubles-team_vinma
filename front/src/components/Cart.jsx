@@ -1,7 +1,7 @@
 // import packages
 import { ChevronLeftIcon, TrashIcon } from "@heroicons/react/24/outline";
 
-const Cart = ({ toggleCart, cart, removeFromCart }) => {
+const Cart = ({ toggleCart, cart, removeFromCart, data }) => {
 
   let total = 0;
 
@@ -10,7 +10,7 @@ const Cart = ({ toggleCart, cart, removeFromCart }) => {
     <div className="bg-white">
     <div className="cart bg-white px-5 border-t-[1px]">
         <h1 className="text-slate-900 text-3xl font-bold">My cart </h1>
-        <div className="flex items-center mt-3">
+        <div className="flex items-center mt-3 mb-5">
           <ChevronLeftIcon className="h-5 w-5" />
           <p className="cursor-pointer" onClick={toggleCart}>
             continuer mon shopping
@@ -20,27 +20,27 @@ const Cart = ({ toggleCart, cart, removeFromCart }) => {
       {cart.map((product) => {
         total += product.price;
         return (
-          <div className="flex flex-col cart bg-white mt-[1px] p-5">
+          <div className="flex flex-col bg-white p-5  border-b-[1px] ">
             <div className="flex justify-end">
               <TrashIcon className="h-6 w-6" onClick={removeFromCart} />
          
             </div>
             <div className="flex items-end justify-between mt-5">
-              <div className="flex items-end">
+              <div className="flex items-start">
                 <img
-                  src={product.picture.Meuble01}
+                  src={product.images[0].secure_url}
                   alt=""
                   className="w-24 h-24 object-cover"
                 />
                 <div className="text-product ml-5">
                   <p className="font-bold">{product.title}</p>
-                  <p className="text-sm w-[230px] mt-2">
+                  <p className="text-sm w-[230px] mt-2 truncate">
                     {product.description}
                   </p>
                 </div>
               </div>
 
-              <div className="price text-xl font-bold">{product.price}</div>
+              <div className="price text-xl font-bold">{product.price} €</div>
             </div>
           </div>
         );

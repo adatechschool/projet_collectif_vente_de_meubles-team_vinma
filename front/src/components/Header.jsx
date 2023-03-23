@@ -94,6 +94,7 @@ const Header = ({ cart, setCart, removeFromCart, isSearched, data }) => {
             cart={cart}
             setCart={setCart}
             removeFromCart={removeFromCart}
+            data={data}
           />
         )}
       </div>

@@ -1,20 +1,19 @@
 // import Carousel from "react-multi-carousel";
 // import "react-multi-carousel/lib/styles.css";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 //import components
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import Filters from "../components/Filters";
 
-const Home = ({data, setCat, isSearchedHome}) => {
+const Home = ({data}) => {
  
   const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
     const newCart = [...cart];
-    const productExist = newCart.find((elem) => elem.id === product.id);
+    const productExist = newCart.find((elem) => elem._id === product._id);
 
     if (productExist) {
       console.log("le produit est deja dans la panier");
@@ -27,7 +26,7 @@ const Home = ({data, setCat, isSearchedHome}) => {
 
   const removeFromCart = (product) => {
     const newCart = [...cart];
-    const productInTab = newCart.find((elem) => elem.id === product.id);
+    const productInTab = newCart.find((elem) => elem._id === product._id);
     const index = newCart.indexOf(productInTab);
     newCart.splice(index, 1);
     setCart(newCart);
@@ -44,8 +43,6 @@ const Home = ({data, setCat, isSearchedHome}) => {
       setCart(JSON.parse(savedCart));
     }
   }, []);
-
-  const navigate = useNavigate();
 
 
 
@@ -88,9 +85,11 @@ const Home = ({data, setCat, isSearchedHome}) => {
     },
   ];
 
-  return (
+  return isLoading ? (
+    "Loading..."
+  ) : (
     <>
-      <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} isSearched={isSearchedHome} />
+      <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} />
 
       <div className="scrollBar flex flex-nowrap mt-5 px-5 h-[145px] overflow-hidden overflow-x-scroll ">
         <div className="flex justify-between sm:w-screen">
@@ -116,30 +115,36 @@ const Home = ({data, setCat, isSearchedHome}) => {
       {/* <Filters /> */}
       <h1 className="mt-20 ml-5 text-3xl font-bold">Vous allez adorer</h1>
       <div className="global-container grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {data.map((post)=>{
-
+        {data.map((post) => {
           return (
-            <div className="border-[1px] rounded-lg m-5 p-5 ">
-            <img
-              className="w-full h-[200px] object-cover rounded-lg mb-5"
-              src={post.images[0].secure_url}
-              alt="img"
-            />
-            <div className="flex justify-between items-end sm:flex-col sm:items-start">
-              <h2 className="text-lg">{post.title}</h2>
-              <h2 className="text-3xl font-bold">{post.price} €</h2>
+            <div className="border-[1px] rounded-lg m-5 p-5 " key={post._id}>
+              <img
+                className="w-full h-[200px] object-cover rounded-lg mb-5"
+                src={post.images[0].secure_url}
+                alt="img"
+              />
+              <div className="flex justify-between items-end sm:flex-col sm:items-start">
+                <h2 className="text-md truncate">{post.title}</h2>
+                <h2 className="text-3xl font-bold">{post.price} €</h2>
+              </div>
+              <div className="flex justify-between">
+                <div className="text-center grow rounded-lg mr-2 mt-5 py-4  bg-orange-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out">
+                  <Link to={`/product/${post._id}`}> Product details</Link>
+                </div>
+
+                <button
+                  type="submit"
+                  onClick={() => {
+                    addToCart(post);
+                  }}
+                  className="rounded-lg mt-5 py-4  px-5 bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
+                >
+                  <ShoppingCartIcon className="h-5 w-5 text-white" />
+                </button>
+              </div>
             </div>
-            <button
-              type="submit"
-              className="rounded-lg mt-5 py-4 px-14 w-full bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
-            >
-              Add to cart
-            </button>
-          </div>
-          )
+          );
         })}
-      
-       
       </div>
     </>
   );
