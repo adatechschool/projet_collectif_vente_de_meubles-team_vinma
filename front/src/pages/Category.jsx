@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 
-export default function Category({data, category}) {
+export default function Category({data, category, cart, setCart, removeFromCart, addToCart}) {
     console.log(category);
 
     return (

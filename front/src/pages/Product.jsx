@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+// import Carousel from "react-multi-carousel";
+// import "react-multi-carousel/lib/styles.css";
+
+
+// import components
 import Header from "../components/Header";
 
-const Product = () => {
+const Product = ({cart, setCart, removeFromCart, addToCart}) => {
   const params = useParams();
-  const [images, setImages] = useState({});
-  const [activeImg, setActiveImage] = useState(images.img1);
   const [postData, setPostData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [displayImg, setDisplayImg] = useState('');
@@ -25,26 +26,6 @@ const Product = () => {
     };
     fetchData();
   }, [params.id]);
-
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 6,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 6,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 4,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 3,
-    },
-  };
 
   console.log(postData);
 
@@ -110,111 +91,3 @@ const Product = () => {
 export default Product;
 
 
-{/* <section>
-        {
-          <Carousel responsive={responsive}>
-            <div className="card mb-8 mt-8 ml-8 bg-white">
-              <img
-                className="w-[200px] h-[200px] object-cover pl-6"
-                src="https://cdn1.bobochicparis.com/191749-thickbox_default/canape-droit-fixe-3-places-cloud-avec-pouf.jpg"
-                alt="img"
-              />
-              <div className="pl-4 pr-4 pb-4">
-                <h2 className="font-bold">Title product</h2>
-                <h2 className="text-4xl pt-2 pb-2">22 €</h2>
-                <button
-                  type="submit"
-                  className="py-2 px-14 bg-amber-400 hover:bg-yellow-600 rounded-md text-white text-sm"
-                >
-                  Add to cart
-                </button>
-              </div>
-            </div>
-            <div className="card mb-8 mt-8 ml-8 bg-white">
-              <img
-                className="w-[200px] h-[200px] object-cover pl-6"
-                src="https://static.tikamoon.com/product_photos/3965_A_HD_001/1200-1200-armoire-de-rangement-en-pin-et-cannage-ninon.webp?t=1665709167"
-                alt="img"
-              />
-              <div className="pl-4 pr-4 pb-4">
-                <h2 className="font-bold">Title product</h2>
-                <h2 className="text-4xl pt-2 pb-2">22 €</h2>
-                <button
-                  type="submit"
-                  className="py-2 px-14 bg-amber-400 hover:bg-yellow-600 rounded-md text-white text-sm"
-                >
-                  Add to cart
-                </button>
-              </div>
-            </div>
-            <div className="card mb-8 mt-8 ml-8 bg-white">
-              <img
-                className="w-[200px] h-[200px] object-cover pl-6"
-                src="https://static.tikamoon.com/product_photos/1625__1200_000/1200-1200-chaise-en-teck-massif-jonak.webp?t=1665573674"
-                alt="img"
-              />
-              <div className="pl-4 pr-4 pb-4">
-                <h2 className="font-bold">Title product</h2>
-                <h2 className="text-4xl pt-2 pb-2">22 €</h2>
-                <button
-                  type="submit"
-                  className="py-2 px-14 bg-amber-400 hover:bg-yellow-600 rounded-md text-white text-sm"
-                >
-                  Add to cart
-                </button>
-              </div>
-            </div>
-            <div className="card mb-8 mt-8 ml-8 bg-white">
-              <img
-                className="w-[200px] h-[200px] object-cover pl-6"
-                src="https://static.tikamoon.com/product_photos/835__HD_002/1200-1200-table-en-teck-massif-coffee-tek-6-8-pers.webp?t=1665819563"
-                alt="img"
-              />
-              <div className="pl-4 pr-4 pb-4">
-                <h2 className="font-bold">Title product</h2>
-                <h2 className="text-4xl pt-2 pb-2">22 €</h2>
-                <button
-                  type="submit"
-                  className="py-2 px-14 bg-amber-400 hover:bg-yellow-600 rounded-md text-white text-sm"
-                >
-                  Add to cart
-                </button>
-              </div>
-            </div>
-            <div className="card mb-8 mt-8 ml-8 bg-white">
-              <img
-                className="w-[200px] h-[200px] object-cover pl-6"
-                src="https://cdn1.bobochicparis.com/197455-thickbox_default/lit-180x200-cm-oceane-avec-lattes-massives-tissu-texture.jpg"
-                alt="img"
-              />
-              <div className="pl-4 pr-4 pb-4">
-                <h2 className="font-bold">Title product</h2>
-                <h2 className="text-4xl pt-2 pb-2">22 €</h2>
-                <button
-                  type="submit"
-                  className="py-2 px-14 bg-amber-400 hover:bg-yellow-600 rounded-md text-white text-sm"
-                >
-                  Add to cart
-                </button>
-              </div>
-            </div>
-            <div className="card mb-8 mt-8 ml-8 bg-white">
-              <img
-                className="w-[200px] h-[200px] object-cover pl-6"
-                src="https://cdn1.bobochicparis.com/197455-thickbox_default/lit-180x200-cm-oceane-avec-lattes-massives-tissu-texture.jpg"
-                alt="img"
-              />
-              <div className="pl-4 pr-4 pb-4">
-                <h2 className="font-bold">Title product</h2>
-                <h2 className="text-4xl pt-2 pb-2">22 €</h2>
-                <button
-                  type="submit"
-                  className="py-2 px-14 bg-amber-400 hover:bg-yellow-600 rounded-md text-white text-sm"
-                >
-                  Add to cart
-                </button>
-              </div>
-            </div>
-          </Carousel>
-        }
-      </section> */}

@@ -9,7 +9,7 @@ import Modifyinfos from "../components/ModifyInfos";
 import ModifyAddress from "../components/ModifyAddress";
 
 
-const Account = () => {
+const Account = ({cart, setCart, removeFromCart, addToCart}) => {
 
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');

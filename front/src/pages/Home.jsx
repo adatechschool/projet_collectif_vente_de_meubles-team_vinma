@@ -9,45 +9,10 @@ import Header from "../components/Header";
 import Banner from "../components/Banner";
 import Filters from "../components/Filters";
 
-const Home = ({data, setCategory, category, search, setSearch, isLoading}) => {
+const Home = ({data, setCategory, search, setSearch, isLoading, cart,  setCart, removeFromCart, addToCart }) => {
  
   const navigate = useNavigate()
 
-  const [cart, setCart] = useState([]);
-
-
-  const addToCart = (product) => {
-    const newCart = [...cart];
-    const productExist = newCart.find((elem) => elem._id === product._id);
-
-    if (productExist) {
-      console.log("le produit est deja dans la panier");
-    } else {
-      newCart.push(product);
-    }
-    setCart(newCart);
-    saveCart(newCart);
-  };
-
-  const removeFromCart = (product) => {
-    const newCart = [...cart];
-    const productInTab = newCart.find((elem) => elem._id === product._id);
-    const index = newCart.indexOf(productInTab);
-    newCart.splice(index, 1);
-    setCart(newCart);
-    saveCart(newCart);
-  };
-
-  const saveCart = (cart) => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  };
-
-  useEffect(() => {
-    const savedCart = localStorage.getItem("cart");
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
-    }
-  }, []);
 
 
 
@@ -94,7 +59,7 @@ const Home = ({data, setCategory, category, search, setSearch, isLoading}) => {
     "Loading..."
   ) : (
     <>
-      <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} search={search} setSearch={setSearch} />
+      <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} addToCart={addToCart} search={search} setSearch={setSearch} />
 
       <div className="scrollBar flex flex-nowrap mt-5 px-5 h-[145px] overflow-hidden overflow-x-scroll ">
         <div className="flex justify-between sm:w-screen">
