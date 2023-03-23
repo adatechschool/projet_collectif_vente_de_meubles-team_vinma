@@ -80,7 +80,7 @@ const Product = ({cart, setCart, removeFromCart, addToCart, data}) => {
         you may also like
       </h2>
       <div>
-        {data.map((post)=>{
+        {/* {data.map((post)=>{
           
           // if (post.category ==== postData.category) {
 
@@ -94,7 +94,7 @@ const Product = ({cart, setCart, removeFromCart, addToCart, data}) => {
           )
         
             }
-          }
+          } */}
       </div>
 
       
