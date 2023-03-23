@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 
+
 //import Components / Pages
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -8,6 +9,10 @@ import Account from "./pages/Account";
 import Publication from "./pages/Publication";
 import Home from "./pages/Home"
 import Product from "./pages/Product";
+import Pagination from "./components/Pagination";
+
+
+
 
 function App() {
 
@@ -23,7 +28,11 @@ function App() {
 
       </Routes>
     </BrowserRouter>
+    <Pagination/>
   </>)
+  
+  
+   
 }
 
 export default App;

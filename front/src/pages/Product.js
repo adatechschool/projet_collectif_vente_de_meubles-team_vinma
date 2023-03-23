@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Meuble01 from "../img/meuble01.jpg";
 
+
 const Product = () => {
   const [toggle, setToggle] = useState(false);
   return (
@@ -134,5 +135,10 @@ const Product = () => {
     </>
   );
 };
+
+
+
+
+
 
 export default Product;
