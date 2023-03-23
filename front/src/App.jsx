@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { useState, useEffect} from "react";
 import axios from "axios";
 import "./App.css";
 
@@ -14,6 +14,8 @@ import Confirmation from "./pages/Confirmation.jsx";
 
 function App() {
   const [data, setData] = useState([]);
+  // const [readOnePostData, setReadOnePostData] = useState([]);
+  // const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,8 +23,20 @@ function App() {
       setData(response.data);
     };
 
+    // const fetchReadOnePostData = async () => {
+    //   const response = await axios.get(`http://localhost:8080/read-one-post/${id}`);
+    //   setReadOnePostData(response.data)
+    //   console.log(readOnePostData)
+    // }
+
     fetchData();
+    // fetchReadOnePostData();
   }, []);
+//   fetchData();
+//   if (params && params.id) {
+//     fetchReadOnePostData();
+//   }
+// }, [params]);
 
   return (
     <>
@@ -33,7 +47,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/account" element={<Account />} />
           <Route path="/publication" element={<Publication />} />
-          <Route path="/product" element={<Product />} />
+          {/* <Route path="/product" element={<Product data={data} readOnePostData={readOnePostData} />} /> */}
+          <Route path="/product" element={<Product/>} />
           <Route path="/confirmation" element={<Confirmation />} />
         </Routes>
       </BrowserRouter>
