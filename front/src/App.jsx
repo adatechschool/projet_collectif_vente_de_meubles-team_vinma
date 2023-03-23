@@ -16,21 +16,25 @@ import Pagination from './components/Pagination';
 
 function App() {
   const [data, setData] = useState([]);
+  const [category, setCategory] = useState('');
+  const [search, setSearch] = useState('');
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8080/read-all-posts");
+      const response = await axios.get(`http://localhost:8080/read-all-posts?category=${search}&title=${search}`);
       setData(response.data);
+      setIsLoading(true)
     };
-
     fetchData();
-  }, []);
+  }, [search]);
 
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home data={data} />} />
+          <Route path="/" element={<Home data={data} category={category} setCategory={setCategory} search={search} setSearch={setSearch}/>} /> 
+          <Route path="/category" element={<Category data={data} category={category} />} /> 
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/account" element={<Account />} />

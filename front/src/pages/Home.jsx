@@ -1,15 +1,20 @@
 // import Carousel from "react-multi-carousel";
 // import "react-multi-carousel/lib/styles.css";
 import { useState, useEffect } from "react";
+import {Link, useNavigate } from "react-router-dom"
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 //import components
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import Filters from "../components/Filters";
 
-const Home = ({data}) => {
+const Home = ({data, setCategory, category, search, setSearch, isLoading}) => {
  
+  const navigate = useNavigate()
+
   const [cart, setCart] = useState([]);
+
 
   const addToCart = (product) => {
     const newCart = [...cart];
@@ -89,7 +94,7 @@ const Home = ({data}) => {
     "Loading..."
   ) : (
     <>
-      <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} />
+      <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} search={search} setSearch={setSearch} />
 
       <div className="scrollBar flex flex-nowrap mt-5 px-5 h-[145px] overflow-hidden overflow-x-scroll ">
         <div className="flex justify-between sm:w-screen">
@@ -97,11 +102,11 @@ const Home = ({data}) => {
             return (
               <div className="flex flex-col items-center mr-5 last:mr-0 w-28 h-28">
                 <img
-                  className="rounded-full border-[1px] p-2 object-cover"
+                  className="rounded-full border-[1px] p-2 object-cover cursor-pointer"
                   src={filter.image}
                   alt={filter.alt}
                   onClick={()=>{
-                    setCat(filter.title);
+                    setCategory(filter.title);
                     navigate('/category');}}
                 />
                 <span className="text-sm mt-2">{filter.title}</span>

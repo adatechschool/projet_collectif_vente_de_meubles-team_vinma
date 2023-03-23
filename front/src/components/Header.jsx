@@ -13,10 +13,9 @@ import {
 // import components
 import Cart from "./Cart";
 
-const Header = ({ cart, setCart, removeFromCart, isSearched, data }) => {
+const Header = ({ cart, setCart, removeFromCart, search, setSearch, data }) => {
 
   const [cartIsOpen, setCartIsOpen] = useState(false);
-  const [searched, setSearched] = useState('');
   const navigate = useNavigate();
 
 
@@ -40,8 +39,8 @@ const Header = ({ cart, setCart, removeFromCart, isSearched, data }) => {
           </div>
           <div className="center">   
                 <div class="relative">
-                    <input type="search"  className=" outline-0 w-48 lg:w-96 block p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Search category" value={searched} onChange={(event)=>setSearched(event.target.value)}/>
-                    <button className="text-white absolute right-2.5 bottom-2.5 bg-amber-400 hover:bg-black font-medium rounded-lg text-sm px-4 py-2" onClick={()=>{isSearched(searched)}}>Search</button>
+                    <input type="search"  className=" outline-0 w-48 lg:w-96 block p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Search category" value={search} onChange={(event)=>setSearch(event.target.value)}/>
+                    <button className="text-white absolute right-2.5 bottom-2.5 bg-amber-400 hover:bg-black font-medium rounded-lg text-sm px-4 py-2" onClick={()=>{setSearch(search)}}>Search</button>
                 </div>
           </div>
           <div className="right">
