@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Header from "../components/Header";
 
 const Publication = ({cart, setCart, removeFromCart, addToCart}) => {
     const [title, setTitle] = useState("");
@@ -56,12 +57,13 @@ const Publication = ({cart, setCart, removeFromCart, addToCart}) => {
 
     return (
         <>
-        <div className="min-h-screen bg-gray-50 flex flex-col justify-center">
+        <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} addToCart={addToCart}/>
+        <div className="bg-beige flex flex-col justify-center">
             <div className="max-w-md-w-full mx-auto">
                 <div className="text-center font-medium text-xl"> Sell your items here</div>
             </div>
             <div className="max-w-md w-full mx-auto mt-4 bg-white p-8 border border-gray-300">
-                <form action="" className="space-y-6">           
+                <form action="" className="space-y-4"> 
                 <div>
                     <label htmlFor="" className="text-sm font-bold text-gray-600 block">Title</label>
                     <input

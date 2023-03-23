@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 // import Carousel from "react-multi-carousel";
 // import "react-multi-carousel/lib/styles.css";
 
@@ -32,9 +34,9 @@ const Product = ({cart, setCart, removeFromCart, addToCart, data}) => {
     <p>Loading....</p>
   ) : (
     <>
-    <Header cart={[]} setCart={()=>{}} removeFromCart={()=>{}}/>
-    <div className="h-screen">
-      <div className="flex justify-between space-x-8 px-8 py-8">
+    <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} addToCart={addToCart}/>
+    <div className="h-screen px-8 py-8">
+      <div className="flex justify-between space-x-8 ">
         <div className="flex flex-col gap-6 lg:w-2/4">
           <img
             src={displayImg}
@@ -67,7 +69,9 @@ const Product = ({cart, setCart, removeFromCart, addToCart, data}) => {
           </p>
           <h6 className="text-2xl font-semibold">{postData.price} €</h6>
           <div className="flex flex-row items-center gap-12">
-            <button className=" bg-amber-400 hover:bg-yellow-600 text-white font-semibold py-3 px-16 rounded-md h-full">
+            <button className=" bg-amber-400 hover:bg-yellow-600 text-white font-semibold py-3 px-16 rounded-md h-full" onClick={() => {
+                    addToCart(postData);
+                  }}>
               Add to Cart
             </button>
           </div>
@@ -79,22 +83,42 @@ const Product = ({cart, setCart, removeFromCart, addToCart, data}) => {
       <h2 className="font-medium text-4xl text-stone-800 mt-10 mr-10">
         you may also like
       </h2>
-      <div>
-        {/* {data.map((post)=>{
-          
-          // if (post.category ==== postData.category) {
-
-          // }
+      <div className="global-container grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        {data.map(post=>{
+          if (post.category === postData.category && post.title != postData.title){
             return (
-              <>
-            <div>
-              {post.title}
+              <div>
+                <div className="border-[1px] rounded-lg m-5 p-5 " key={post._id}>
+              <img
+                className="w-full h-[200px] object-cover rounded-lg mb-5"
+                src={post.images[0].secure_url}
+                alt="img"
+              />
+              <div className="flex justify-between items-end sm:flex-col sm:items-start">
+                <h2 className="text-md truncate">{post.title}</h2>
+                <h2 className="text-3xl font-bold">{post.price} €</h2>
+              </div>
+              <div className="flex justify-between">
+                <div className="text-center grow rounded-lg mr-2 mt-5 py-4  bg-orange-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out">
+                  <Link to={`/product/${post._id}`}> Product details</Link>
+                </div>
+
+                <button
+                  type="submit"
+                  onClick={() => {
+                    addToCart(post);
+                  }}
+                  className="rounded-lg mt-5 py-4  px-5 bg-amber-400 hover:bg-black duration-300 rounded-md text-white text-sm hover:transition hover:duration-300 hover:ease-in-out"
+                >
+                  <ShoppingCartIcon className="h-5 w-5 text-white" />
+                </button>
+              </div>
             </div>
-            </>
-          )
-        
-            }
-          } */}
+                
+                </div>
+            )
+          }
+        })}
       </div>
 
       

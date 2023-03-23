@@ -77,7 +77,7 @@ function App() {
           <Route path="/confirmation" element={<Confirmation />} />
         </Routes>
       </BrowserRouter>
-      <Pagination />
+      {/* <Pagination /> */}
     </>
   );
 
