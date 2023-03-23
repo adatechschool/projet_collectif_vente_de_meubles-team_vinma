@@ -40,7 +40,6 @@ const Header = ({ cart, setCart, removeFromCart, search, setSearch, data }) => {
           <div className="center">   
                 <div class="relative">
                     <input type="search"  className=" outline-0 w-48 lg:w-96 block p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Search category" value={search} onChange={(event)=>setSearch(event.target.value)}/>
-                    <button className="text-white absolute right-2.5 bottom-2.5 bg-amber-400 hover:bg-black font-medium rounded-lg text-sm px-4 py-2" onClick={()=>{setSearch(search)}}>Search</button>
                 </div>
           </div>
           <div className="right">

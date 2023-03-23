@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Header from "../components/Header";
 
 const Product = () => {
   const params = useParams();
@@ -10,6 +11,7 @@ const Product = () => {
   const [activeImg, setActiveImage] = useState(images.img1);
   const [postData, setPostData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [displayImg, setDisplayImg] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,8 +19,9 @@ const Product = () => {
         `http://localhost:8080/read-one-post/${params.id}`
       );
       setPostData(response.data);
-
       setIsLoading(false);
+      setDisplayImg(response.data.images[0].secure_url);
+      
     };
     fetchData();
   }, [params.id]);
@@ -49,34 +52,40 @@ const Product = () => {
     <p>Loading....</p>
   ) : (
     <>
-      <div className="flex flex-col justify-between lg:flex-row gap-16 lg:items-center">
-        <div>{postData.description}</div>
+    <Header cart={[]} setCart={()=>{}} removeFromCart={()=>{}}/>
+    <div className="h-screen">
+      <div className="flex justify-between space-x-8 px-8 py-8">
         <div className="flex flex-col gap-6 lg:w-2/4">
           <img
-            src={activeImg}
+            src={displayImg}
             alt=""
-            className="w-full h-full aspect-square object-cover rounded-xl"
+            className="w-full h-full aspect-square object-cover rounded"
           />
-          {/* <div className='flex flex-row justify-between h-24'>
-                    <img src={images.img1} alt="" className='w-24 h-24 rounded-md cursor-pointer' onClick={() => setActiveImage(images.img1)}/>
-                    <img src={images.img2} alt="" className='w-24 h-24 rounded-md cursor-pointer' onClick={() => setActiveImage(images.img2)}/>
-                    <img src={images.img3} alt="" className='w-24 h-24 rounded-md cursor-pointer' onClick={() => setActiveImage(images.img3)}/>
-                    <img src={images.img4} alt="" className='w-24 h-24 rounded-md cursor-pointer' onClick={() => setActiveImage(images.img4)}/>
-                </div> */}
+          <div className="flex space-x-4">
+          {postData.images.map(img=>{
+            return (
+              <div className="w-24">
+              <img
+            src={img.secure_url}
+            alt=""
+            className="w-full h-full aspect-square object-cover rounded cursor-pointer"
+            onClick={()=>{setDisplayImg(img.secure_url)}}
+          />
+          </div>
+            )
+            })}
+          </div>
         </div>
         {/* ABOUT */}
         <div className="flex flex-col gap-4 lg:w-2/4">
           <div>
-            <span className=" text-amber-400 font-semibold">Canapé au lit</span>
-            <h1 className="text-3xl font-bold">Canapé</h1>
+            <span className=" text-amber-400 font-semibold">{postData.category}</span>
+            <h1 className="text-3xl font-bold">{postData.title}</h1>
           </div>
           <p className="text-gray-700">
-            Les bois durs sont considérés comme la qualité maximale et sont les
-            plus chers. Leurs couleurs naturelles varient des bois les plus
-            profonds aux bois les plus légers et ils peuvent être teints ou
-            peints pour plus de diversité.
+          {postData.description}
           </p>
-          <h6 className="text-2xl font-semibold">$ 199.00</h6>
+          <h6 className="text-2xl font-semibold">{postData.price} €</h6>
           <div className="flex flex-row items-center gap-12">
             <button className=" bg-amber-400 hover:bg-yellow-600 text-white font-semibold py-3 px-16 rounded-md h-full">
               Add to Cart
@@ -85,12 +94,23 @@ const Product = () => {
         </div>
       </div>
 
+
+
       <h2 className="font-medium text-4xl text-stone-800 mt-10 mr-10">
         you may also like
       </h2>
 
-      {/* adding products */}
-      <section>
+      
+      </div>
+    </>
+    
+  );
+};
+
+export default Product;
+
+
+{/* <section>
         {
           <Carousel responsive={responsive}>
             <div className="card mb-8 mt-8 ml-8 bg-white">
@@ -197,9 +217,4 @@ const Product = () => {
             </div>
           </Carousel>
         }
-      </section>
-    </>
-  );
-};
-
-export default Product;
+      </section> */}
