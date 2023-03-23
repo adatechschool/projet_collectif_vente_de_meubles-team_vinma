@@ -2,7 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Publication = ({cart, setCart, removeFromCart, addToCart}) => {
+//import components
+import Header from "../components/Header";
+
+const Publication = ({cart, setCart, removeFromCart, addToCart,search,setSearch,userToken,infosUser}) => {
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
@@ -56,6 +59,16 @@ const Publication = ({cart, setCart, removeFromCart, addToCart}) => {
 
     return (
         <>
+           <Header
+          cart={cart}
+          setCart={setCart}
+          removeFromCart={removeFromCart}
+          addToCart={addToCart}
+          search={search}
+          setSearch={setSearch}
+          userToken={userToken}
+          infosUser={infosUser}
+        />
         <div className="min-h-screen bg-gray-50 flex flex-col justify-center">
             <div className="max-w-md-w-full mx-auto">
                 <div className="text-center font-medium text-xl"> Sell your items here</div>

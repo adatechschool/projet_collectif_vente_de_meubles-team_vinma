@@ -1,20 +1,29 @@
 // import Carousel from "react-multi-carousel";
 // import "react-multi-carousel/lib/styles.css";
 import { useState, useEffect } from "react";
-import {Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 //import components
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import Filters from "../components/Filters";
+import Pagination from "../components/Pagination";
 
-const Home = ({data, setCategory, search, setSearch, isLoading, cart,  setCart, removeFromCart, addToCart }) => {
- 
-  const navigate = useNavigate()
-
-
-
+const Home = ({
+  data,
+  setCategory,
+  search,
+  setSearch,
+  isLoading,
+  cart,
+  setCart,
+  removeFromCart,
+  addToCart,
+  userToken,
+  infosUser,
+}) => {
+  const navigate = useNavigate();
 
   const productsFilters = [
     {
@@ -59,7 +68,16 @@ const Home = ({data, setCategory, search, setSearch, isLoading, cart,  setCart, 
     "Loading..."
   ) : (
     <>
-      <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} addToCart={addToCart} search={search} setSearch={setSearch} />
+      <Header
+        cart={cart}
+        setCart={setCart}
+        removeFromCart={removeFromCart}
+        addToCart={addToCart}
+        search={search}
+        setSearch={setSearch}
+        userToken={userToken}
+        infosUser={infosUser}
+      />
 
       <div className="scrollBar flex flex-nowrap mt-5 px-5 h-[145px] overflow-hidden overflow-x-scroll ">
         <div className="flex justify-between sm:w-screen">
@@ -70,9 +88,10 @@ const Home = ({data, setCategory, search, setSearch, isLoading, cart,  setCart, 
                   className="rounded-full border-[1px] p-2 object-cover cursor-pointer"
                   src={filter.image}
                   alt={filter.alt}
-                  onClick={()=>{
+                  onClick={() => {
                     setCategory(filter.title);
-                    navigate('/category');}}
+                    navigate("/category");
+                  }}
                 />
                 <span className="text-sm mt-2">{filter.title}</span>
               </div>
@@ -116,6 +135,7 @@ const Home = ({data, setCategory, search, setSearch, isLoading, cart,  setCart, 
           );
         })}
       </div>
+      <Pagination />
     </>
   );
 };

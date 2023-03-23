@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function Modifyinfos({infosModified}) {
+export default function Modifyinfos({infosModified, infosUser}) {
 
     const [newName, setNewName] = useState('');
     const [newLastName, setNewLastName] = useState('');
@@ -10,9 +10,10 @@ export default function Modifyinfos({infosModified}) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const userId = localStorage.getItem('id');
+       
+        console.log(infosUser)
         try {
-            const modif = await axios.put('http://localhost:8080/modification/' + userId, {
+            const modif = await axios.put('http://localhost:8080/modification/' + infosUser.userId, {
             name : newName,
             email: newEmail,
             lastName: newLastName

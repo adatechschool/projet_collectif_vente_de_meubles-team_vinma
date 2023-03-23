@@ -1,12 +1,21 @@
 import Header from "../components/Header";
 
-export default function Category({data, category, cart, setCart, removeFromCart, addToCart}) {
+export default function Category({data, category, cart, setCart, removeFromCart, addToCart, search, setSearch, userToken, infosUser}) {
     console.log(category);
 
     return (
         <>
         <div className="h-screen">
-        <Header cart={[]} setCart={()=>{}} removeFromCart={()=>{}}/>
+        <Header
+          cart={cart}
+          setCart={setCart}
+          removeFromCart={removeFromCart}
+          addToCart={addToCart}
+          search={search}
+          setSearch={setSearch}
+          userToken={userToken}
+          infosUser={infosUser}
+        />
         <div className="global-container grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {data.map((post)=>{
                 if (post.category === category){

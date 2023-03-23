@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function ChangePassword() {
+export default function ChangePassword({infosUser}) {
 
     const [newPassword, setNewPassword] = useState('');
     const [currentPassword, setCurrentPassword] = useState('');
@@ -9,9 +9,9 @@ export default function ChangePassword() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const userId = localStorage.getItem('id');
+        
         try {
-            const modif = await axios.put('http://localhost:8080/modification/' + userId, {
+            const modif = await axios.put('http://localhost:8080/modification/' + infosUser.userId, {
             password : newPassword,
 
             }, {

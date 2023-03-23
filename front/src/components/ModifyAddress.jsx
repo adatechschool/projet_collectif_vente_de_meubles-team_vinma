@@ -1,16 +1,16 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function ModifyAddress({infosModified}) {
+export default function ModifyAddress({infosModified, infosUser}) {
 
     const [newAdress, setNewAddress] = useState('');
     const [modified, setModified] = useState('');
     
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const userId = localStorage.getItem('id');
+    
         try {
-            const modif = await axios.put('http://localhost:8080/modification/' + userId, {
+            const modif = await axios.put('http://localhost:8080/modification/' + infosUser.userId, {
             address: newAdress
 
             }, {

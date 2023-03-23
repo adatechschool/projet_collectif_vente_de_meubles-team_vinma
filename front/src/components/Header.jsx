@@ -13,7 +13,7 @@ import {
 // import components
 import Cart from "./Cart";
 
-const Header = ({ cart, setCart, removeFromCart, search, setSearch, data }) => {
+const Header = ({ cart, setCart, removeFromCart, search, setSearch, data, userToken, userId, infosUser }) => {
 
   const [cartIsOpen, setCartIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -59,10 +59,11 @@ const Header = ({ cart, setCart, removeFromCart, search, setSearch, data }) => {
               
                 <UserIcon className="h-6 w-6 text-slate-900 mr-3 hover:cursor-pointer" 
                 onClick={() => {
-                  if (localStorage.getItem("id") === null) {
-                    navigate("/login");
+                  if (userToken) {
+                    navigate(`/account/${infosUser.userId}`);
+                  
                   } else{
-                    navigate("/account");
+                    navigate("/login");
                   }
                 }}
                 />

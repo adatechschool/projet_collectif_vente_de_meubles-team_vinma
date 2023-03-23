@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Signup = () => {
+const Signup = ({handleToken}) => {
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
   const [nickname, setNickname] = useState("");
@@ -30,7 +30,7 @@ const Signup = () => {
         formData.append('email', email)
         formData.append('password', password)
 
-        await axios.post("http://localhost:8080/signup",
+        const response = await axios.post("http://localhost:8080/signup",
           formData,
         
         {
@@ -38,7 +38,9 @@ const Signup = () => {
             "Content-Type": "multipart/form-data",
           }
         });
-        navigate("/confirmation");
+        // navigate("/confirmation");
+        handleToken(response.token);
+        navigate("/");
         
       } else {
         console.log(
