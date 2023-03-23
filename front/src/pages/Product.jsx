@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Carousel from "react-multi-carousel";
+//import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Header from "../components/Header";
 
-const Product = () => {
+const Product = ({data}) => {
   const params = useParams();
-  const [images, setImages] = useState({});
-  const [activeImg, setActiveImage] = useState(images.img1);
   const [postData, setPostData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [displayImg, setDisplayImg] = useState('');
@@ -21,30 +19,9 @@ const Product = () => {
       setPostData(response.data);
       setIsLoading(false);
       setDisplayImg(response.data.images[0].secure_url);
-      
     };
     fetchData();
   }, [params.id]);
-
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 6,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 6,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 4,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 3,
-    },
-  };
 
   console.log(postData);
 
@@ -99,6 +76,23 @@ const Product = () => {
       <h2 className="font-medium text-4xl text-stone-800 mt-10 mr-10">
         you may also like
       </h2>
+      <div>
+        {data.map((post)=>{
+          
+          // if (post.category ==== postData.category) {
+
+          // }
+            return (
+              <>
+            <div>
+              {post.title}
+            </div>
+            </>
+          )
+        
+            }
+          }
+      </div>
 
       
       </div>

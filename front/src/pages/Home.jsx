@@ -9,7 +9,7 @@ import Header from "../components/Header";
 import Banner from "../components/Banner";
 import Filters from "../components/Filters";
 
-const Home = ({data, setCategory, category, search, setSearch, isLoading}) => {
+const Home = ({data, setCategory, search, setSearch, isLoading}) => {
  
   const navigate = useNavigate()
 
