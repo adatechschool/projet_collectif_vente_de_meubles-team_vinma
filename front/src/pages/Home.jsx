@@ -90,7 +90,7 @@ const Home = ({data, setCat, isSearchedHome}) => {
 
   return (
     <>
-      <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} isSearched={isSearchedHome}/>
+      <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} isSearched={isSearchedHome} />
 
       <div className="scrollBar flex flex-nowrap mt-5 px-5 h-[145px] overflow-hidden overflow-x-scroll ">
         <div className="flex justify-between sm:w-screen">
@@ -146,29 +146,3 @@ const Home = ({data, setCat, isSearchedHome}) => {
 };
 
 export default Home;
-
-{
-  /* <>
-      <div className="bg-beige h-screen">
-        <Header cart={cart} setCart={setCart} removeFromCart={removeFromCart} />
-        <div className="product flex flex-row m-5">
-          {products.map((product, index) => {
-            return (
-              <div
-                className="bg-white p-5 m-2"
-                onClick={() => {
-                  addToCart(product);
-                }}
-                key={product.id}
-              >
-                <h1>{product.title}</h1>
-                <p>{product.description}</p>
-                <img className="h-20" src={product.picture.Meuble01} alt="" />,
-                <p>{product.price}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </> */
-}

@@ -19,10 +19,13 @@ function App() {
   const [category, setCategory] = useState('');
   const [search, setSearch] = useState('');
 
+  
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(`http://localhost:8080/read-all-posts?category=${search}&title=${search}`);
       setData(response.data);
+      
     };
 
     fetchData();

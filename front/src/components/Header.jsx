@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom";
 
 // import assets
@@ -13,11 +13,12 @@ import {
 // import components
 import Cart from "./Cart";
 
-const Header = ({ cart, setCart, removeFromCart, isSearched }) => {
+const Header = ({ cart, setCart, removeFromCart, isSearched, data }) => {
 
   const [cartIsOpen, setCartIsOpen] = useState(false);
   const [searched, setSearched] = useState('');
   const navigate = useNavigate();
+
 
   const toggleCart = () => {
     setCartIsOpen(!cartIsOpen);
@@ -56,7 +57,8 @@ const Header = ({ cart, setCart, removeFromCart, isSearched }) => {
               <li>
                 <MagnifyingGlassIcon className="h-6 w-6 text-slate-900 mr-3" />
               </li>
-              <li>
+              <li className="flex">
+              
                 <UserIcon className="h-6 w-6 text-slate-900 mr-3 hover:cursor-pointer" 
                 onClick={() => {
                   if (localStorage.getItem("id") === null) {
@@ -64,7 +66,8 @@ const Header = ({ cart, setCart, removeFromCart, isSearched }) => {
                   } else{
                     navigate("/account");
                   }
-                }}/>
+                }}
+                />
               </li>
               {cart.length ? (
               <li  className="flex">
