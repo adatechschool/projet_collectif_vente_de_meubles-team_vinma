@@ -88,7 +88,8 @@ const Product = ({
             <p className="text-gray-700">{postData.description}</p>
             <h6 className="text-2xl font-semibold">{postData.price} €</h6>
             <div className="flex flex-row items-center gap-12">
-              <button className=" bg-amber-400 hover:bg-yellow-600 text-white font-semibold py-3 px-16 rounded-md h-full">
+              <button className=" bg-amber-400 hover:bg-yellow-600 text-white font-semibold py-3 px-16 rounded-md h-full"
+              onClick={()=>{addToCart(postData)}}>
                 Add to Cart
               </button>
             </div>

@@ -102,7 +102,7 @@ const Home = ({
 
       <Banner />
       {/* <Filters /> */}
-      <h1 className="mt-20 ml-5 text-3xl font-bold">Vous allez adorer</h1>
+      <h1 className="mt-10 ml-5 text-3xl font-bold">Vous allez adorer</h1>
       <div className="global-container grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {data.map((post) => {
           return (
