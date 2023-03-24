@@ -94,7 +94,7 @@ const Product = ({
             </div>
           </div>
         </div>
-<div className=" h-[1px] bg-gray-200 mx-5"></div>
+        <div className=" h-[1px] bg-gray-200 mx-5"></div>
         <h2 className="font-medium text-4xl text-stone-800 mt-10 mr-10 ml-5">
           You may also like
         </h2>
