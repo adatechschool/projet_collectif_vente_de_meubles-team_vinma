@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import Product from "./pages/Product";
 import Confirmation from "./pages/Confirmation.jsx";
 import Category from "./pages/Category";
+import Footer from "./components/Footer";
 
 function App() {
   const [data, setData] = useState([]);
@@ -198,6 +199,7 @@ function App() {
           <Route path="/confirmation" element={<Confirmation />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </>
   );
 }
