@@ -110,7 +110,7 @@ const Home = ({
               <img
                 className="w-full h-[200px] object-cover rounded-lg mb-5"
                 src={post.images[0].secure_url}
-                alt="img"
+                alt={`photo of ${post.title}`}
               />
               <div className="flex justify-between items-end sm:flex-col sm:items-start">
                 <h2 className="text-md truncate">{post.title}</h2>
