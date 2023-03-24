@@ -158,6 +158,7 @@ function App() {
                 handleInfosUser={handleInfosUser}
                 search={search}
                 setSearch={setSearch}
+                data={data}
               />
             }
           />

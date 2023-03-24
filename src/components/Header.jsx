@@ -25,30 +25,10 @@ const Header = ({
 }) => {
   const [cartIsOpen, setCartIsOpen] = useState(false);
   const navigate = useNavigate();
-  const [imageHeader, setImageHeader] = useState(null);
 
   const toggleCart = () => {
     setCartIsOpen(!cartIsOpen);
   };
-
-  const handleProfileImage = () => {
-    if (infosUser){
-      setImageHeader(<>
-      <div className="flex mr-3 items-center space-x-2 cursor-pointer">
-      <img className="w-8 h-8 rounded-full object-cover " src={infosUser.profilePicture.secure_url}/>
-      <p>{infosUser.name}</p>
-      </div>
-      </>);
-    } else {
-      setImageHeader(<UserIcon
-        className="h-6 w-6 text-slate-900 mr-3 hover:cursor-pointer"
-        />);
-    }
-  }
-
-  useEffect(()=>{
-    handleProfileImage();
-  }, [infosUser])
 
   return (
     <>
@@ -98,9 +78,17 @@ const Header = ({
                       navigate("/login");
                     }
                   }}>
-                    <div className="">
-                      {imageHeader}
+                    {infosUser ? (
+                    <div className="flex mr-3 items-center space-x-2 cursor-pointer">
+                      <img
+                        className="w-8 h-8 rounded-full object-cover "
+                        src={infosUser.profilePicture.secure_url}
+                      />
+                      <p>{infosUser.name}</p>
                     </div>
+                  ) : (
+                    <UserIcon className="h-6 w-6 text-slate-900 mr-3 hover:cursor-pointer" />
+                  )}
               </div>
               </li>
               {cart.length ? (

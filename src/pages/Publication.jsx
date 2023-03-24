@@ -121,12 +121,12 @@ const Publication = ({
                 }}
               >
                 <option value="">Select an option</option>
-                <option value="Bed">Lit</option>
-                <option value="Sofa">Canapé</option>
-                <option value="Cabinet">Armoire</option>
-                <option value="Chair">Chaise</option>
+                <option value="Bed">Bed</option>
+                <option value="Sofa">Sofa</option>
+                <option value="Cabinet">Cabinet</option>
+                <option value="Chair">Chir</option>
                 <option value="Table">Table</option>
-                <option value="Others">Autre</option>
+                <option value="Others">Others</option>
               </select>
             </div>
             <div className="flex flex-col items-start">

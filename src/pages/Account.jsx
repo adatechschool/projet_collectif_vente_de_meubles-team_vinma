@@ -19,6 +19,7 @@ const Account = ({
   handleInfosUser,
   search,
   setSearch,
+  data
 }) => {
   const params = useParams();
   const navigate = useNavigate();
@@ -81,7 +82,7 @@ const Account = ({
     },
     {
       title: "publications",
-      content: <MyPublications />,
+      content: <MyPublications infosUser={infosUser} data={data}/>,
     },
     {
       title: "password",
